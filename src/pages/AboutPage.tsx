@@ -1,0 +1,39 @@
+import { motion } from "framer-motion";
+import { Navbar } from "@/components/Navbar";
+import { About } from "@/components/About";
+import { CTA } from "@/components/CTA";
+import { Footer } from "@/components/Footer";
+
+const AboutPage = () => {
+  return (
+    <main className="min-h-screen bg-black text-white">
+      <Navbar />
+
+      <section className="relative pt-40 pb-10 px-6 overflow-hidden">
+        <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#22D3EE]/15 blur-[140px]" />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="relative mx-auto max-w-3xl text-center"
+        >
+          <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
+            About
+          </span>
+          <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
+            We build AI that ships — and pays for itself.
+          </h1>
+          <p className="mt-5 text-white/65 text-lg leading-relaxed">
+            Viddix AI is a modern AI agency for teams that want to move faster, sell more, and operate leaner. We design, build, and deploy the systems that get you there.
+          </p>
+        </motion.div>
+      </section>
+
+      <About />
+      <CTA />
+      <Footer />
+    </main>
+  );
+};
+
+export default AboutPage;
