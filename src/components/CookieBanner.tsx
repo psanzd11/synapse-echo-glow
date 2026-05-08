@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Cookie, X } from "lucide-react";
+import { useT } from "@/contexts/LanguageContext";
 
 const STORAGE_KEY = "viddix-cookie-consent";
 
@@ -38,12 +39,13 @@ const onAccept = () => {
 
 export const CookieBanner = () => {
   const [visible, setVisible] = useState(false);
+  const { t } = useT();
 
   useEffect(() => {
     const consent = readConsent();
     if (consent === null) {
-      const t = setTimeout(() => setVisible(true), 600);
-      return () => clearTimeout(t);
+      const timer = setTimeout(() => setVisible(true), 600);
+      return () => clearTimeout(timer);
     }
     if (consent === "accepted") onAccept();
   }, []);
@@ -76,13 +78,13 @@ export const CookieBanner = () => {
                 <Cookie className="h-4 w-4 text-[#A78BFA]" />
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-white">We use a few cookies.</p>
+                <p className="text-sm font-medium text-white">{t.cookie.title}</p>
                 <p className="mt-1 text-xs text-white/60 leading-relaxed">
-                  We use a small set of cookies and analytics to understand how the site is used. See our{" "}
+                  {t.cookie.desc}{" "}
                   <Link to="/privacy" className="text-[#22D3EE] hover:underline">
-                    privacy policy
+                    {t.cookie.privacyPolicy}
                   </Link>{" "}
-                  for details.
+                  {t.cookie.descEnd}
                 </p>
               </div>
               <button
@@ -101,14 +103,14 @@ export const CookieBanner = () => {
                 onClick={accept}
                 className="flex-1 inline-flex items-center justify-center rounded-full bg-gradient-to-b from-white to-zinc-200 px-4 py-2 text-xs font-medium text-black hover:shadow-[0_0_30px_rgba(167,139,250,0.4)] transition-all"
               >
-                Accept all
+                {t.cookie.accept}
               </button>
               <button
                 type="button"
                 onClick={decline}
                 className="flex-1 inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/80 hover:bg-white/10 transition-colors"
               >
-                Decline non-essential
+                {t.cookie.decline}
               </button>
             </div>
           </div>

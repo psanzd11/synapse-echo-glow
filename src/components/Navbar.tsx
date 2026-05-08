@@ -1,24 +1,31 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { LogoVideo } from "./LogoVideo";
-
-const links = [
-  { label: "Services", to: "/services" },
-  { label: "AI Agents", to: "/ai-agents" },
-  { label: "Case Studies", to: "/case-studies" },
-  { label: "Pricing", to: "/pricing" },
-  { label: "About", to: "/about" },
-];
+import { useTheme } from "@/contexts/ThemeContext";
+import { useT } from "@/contexts/LanguageContext";
+import type { Lang } from "@/lib/translations";
 
 export const Navbar = () => {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const { t, lang, setLang } = useT();
 
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
+
+  const links = [
+    { label: t.nav.services, to: "/services" },
+    { label: t.nav.aiAgents, to: "/ai-agents" },
+    { label: t.nav.caseStudies, to: "/case-studies" },
+    { label: t.nav.pricing, to: "/pricing" },
+    { label: t.nav.about, to: "/about" },
+  ];
+
+  const toggleLang = () => setLang(lang === "en" ? "es" : ("en" as Lang));
 
   return (
     <motion.nav
@@ -29,7 +36,10 @@ export const Navbar = () => {
     >
       <div className="mx-auto max-w-7xl rounded-3xl md:rounded-full border border-white/10 bg-black/40 backdrop-blur-xl px-6 py-3">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-white font-medium tracking-tight text-lg">
+          <Link
+            to="/"
+            className="flex items-center gap-2 text-white font-medium tracking-tight text-lg"
+          >
             <LogoVideo className="h-9 w-9 object-contain drop-shadow-[0_0_12px_rgba(124,92,255,0.55)]" />
             Viddix<span className="text-white/60 font-normal">AI</span>
           </Link>
@@ -38,7 +48,7 @@ export const Navbar = () => {
             {links.map((l) => {
               const active = pathname === l.to;
               return (
-                <li key={l.label}>
+                <li key={l.to}>
                   <Link
                     to={l.to}
                     className={[
@@ -66,11 +76,40 @@ export const Navbar = () => {
           </ul>
 
           <div className="flex items-center gap-2">
+            {/* Language toggle */}
+            <button
+              type="button"
+              onClick={toggleLang}
+              aria-label="Toggle language"
+              className="hidden sm:inline-flex items-center justify-center h-9 px-3 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-white hover:bg-white/10 text-xs font-medium transition-colors"
+            >
+              {lang === "en" ? "ES" : "EN"}
+            </button>
+
+            {/* Theme toggle */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label="Toggle theme"
+              className="hidden sm:inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-white hover:bg-white/10 transition-colors"
+            >
+              {theme === "dark" ? (
+                <Sun className="h-4 w-4" />
+              ) : (
+                <Moon className="h-4 w-4" />
+              )}
+            </button>
+
             <Link
               to="/book"
-              className="hidden sm:inline-flex text-sm font-medium text-black bg-gradient-to-b from-white to-zinc-300 hover:from-white hover:to-white transition-all px-4 py-2 rounded-full shadow-[0_1px_0_0_rgba(255,255,255,0.6)_inset]"
+              className={[
+                "hidden sm:inline-flex text-sm font-medium transition-all px-4 py-2 rounded-full",
+                theme === "light"
+                  ? "bg-black text-white hover:bg-zinc-800"
+                  : "text-black bg-gradient-to-b from-white to-zinc-300 hover:from-white hover:to-white shadow-[0_1px_0_0_rgba(255,255,255,0.6)_inset]",
+              ].join(" ")}
             >
-              Book a Call
+              {t.nav.bookCall}
             </Link>
 
             <button
@@ -99,7 +138,7 @@ export const Navbar = () => {
                 {links.map((l) => {
                   const active = pathname === l.to;
                   return (
-                    <li key={l.label}>
+                    <li key={l.to}>
                       <Link
                         to={l.to}
                         className={[
@@ -117,10 +156,36 @@ export const Navbar = () => {
                 <li className="mt-2">
                   <Link
                     to="/book"
-                    className="block w-full text-center text-sm font-medium text-black bg-gradient-to-b from-white to-zinc-300 px-4 py-2.5 rounded-full"
+                    className={[
+                      "block w-full text-center text-sm font-medium px-4 py-2.5 rounded-full",
+                      theme === "light"
+                        ? "bg-black text-white"
+                        : "text-black bg-gradient-to-b from-white to-zinc-300",
+                    ].join(" ")}
                   >
-                    Book a Call
+                    {t.nav.bookCall}
                   </Link>
+                </li>
+                {/* Mobile: theme + lang toggles */}
+                <li className="mt-2 flex gap-2">
+                  <button
+                    type="button"
+                    onClick={toggleTheme}
+                    className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white/70 hover:text-white text-sm transition-colors"
+                  >
+                    {theme === "dark" ? (
+                      <><Sun className="h-4 w-4" /> Light</>
+                    ) : (
+                      <><Moon className="h-4 w-4" /> Dark</>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={toggleLang}
+                    className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 text-white/70 hover:text-white text-sm font-medium transition-colors"
+                  >
+                    {lang === "en" ? "Español" : "English"}
+                  </button>
                 </li>
               </ul>
             </motion.div>

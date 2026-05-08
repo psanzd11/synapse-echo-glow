@@ -3,15 +3,10 @@ import { Calendar, Mail, Check, ArrowRight, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-
-const benefits = [
-  "Free 30-minute strategy session",
-  "Custom AI roadmap for your business",
-  "Concrete first-step recommendations",
-  "No commitment, no sales pressure",
-];
+import { useT } from "@/contexts/LanguageContext";
 
 const BookCallPage = () => {
+  const { t } = useT();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -52,17 +47,15 @@ const BookCallPage = () => {
             transition={{ duration: 0.7 }}
           >
             <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
-              Book a Call
+              {t.book.eyebrow}
             </span>
             <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
-              Let's map your AI advantage.
+              {t.book.heading}
             </h1>
-            <p className="mt-5 text-white/65 text-lg leading-relaxed">
-              Tell us about your business and what you're trying to solve. We'll come back within 24 hours with concrete next steps — and a free 30-minute strategy session if it's a fit.
-            </p>
+            <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.book.subtext}</p>
 
             <ul className="mt-8 space-y-3">
-              {benefits.map((b) => (
+              {t.book.benefits.map((b) => (
                 <li key={b} className="flex items-center gap-3 text-sm text-white/80">
                   <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#22D3EE]/15 border border-[#22D3EE]/30">
                     <Check className="h-3.5 w-3.5 text-[#22D3EE]" />
@@ -82,7 +75,7 @@ const BookCallPage = () => {
               </a>
               <div className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm text-white/70">
                 <Calendar className="h-4 w-4 text-[#A78BFA]" />
-                Reply within 24h
+                {t.book.replyWithin}
               </div>
             </div>
           </motion.div>
@@ -100,14 +93,16 @@ const BookCallPage = () => {
                 <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#22D3EE]/10 border border-[#22D3EE]/30 mb-5">
                   <Check className="h-6 w-6 text-[#22D3EE]" />
                 </div>
-                <h3 className="text-2xl font-medium mb-2">Request sent.</h3>
+                <h3 className="text-2xl font-medium mb-2">{t.book.successTitle}</h3>
                 <p className="text-white/60 text-sm">
-                  We'll get back to you at <span className="text-white">{form.email}</span> within 24 hours.
+                  {t.book.successDescPrefix}{" "}
+                  <span className="text-white">{form.email}</span>{" "}
+                  {t.book.successDescSuffix}
                 </p>
               </div>
             ) : (
               <form onSubmit={submit} className="space-y-4">
-                <Field label="Full name" required>
+                <Field label={t.book.formName} required>
                   <input
                     required
                     value={form.name}
@@ -116,7 +111,7 @@ const BookCallPage = () => {
                     placeholder="Jane Doe"
                   />
                 </Field>
-                <Field label="Work email" required>
+                <Field label={t.book.formEmail} required>
                   <input
                     required
                     type="email"
@@ -126,7 +121,7 @@ const BookCallPage = () => {
                     placeholder="jane@company.com"
                   />
                 </Field>
-                <Field label="Company">
+                <Field label={t.book.formCompany}>
                   <input
                     value={form.company}
                     onChange={(e) => set("company", e.target.value)}
@@ -134,14 +129,14 @@ const BookCallPage = () => {
                     placeholder="Acme Inc."
                   />
                 </Field>
-                <Field label="What are you trying to solve?" required>
+                <Field label={t.book.formChallenge} required>
                   <textarea
                     required
                     rows={4}
                     value={form.challenge}
                     onChange={(e) => set("challenge", e.target.value)}
                     className={`${inputCls} resize-none`}
-                    placeholder="Tell us what's slowing your team down or where you'd like AI to help…"
+                    placeholder={t.book.formChallengePlaceholder}
                   />
                 </Field>
                 <button
@@ -153,7 +148,7 @@ const BookCallPage = () => {
                     <Loader2 className="h-4 w-4 animate-spin" />
                   ) : (
                     <>
-                      Request My Strategy Call
+                      {t.book.formSubmit}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </>
                   )}
@@ -162,7 +157,6 @@ const BookCallPage = () => {
             )}
           </motion.div>
         </div>
-
       </section>
       <Footer />
     </main>

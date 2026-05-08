@@ -1,26 +1,12 @@
 import { motion } from "framer-motion";
 import { Bot, Workflow, Sparkles, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { VideoPlayer } from "./VideoPlayer";
 import { Navbar } from "./Navbar";
+import { useT } from "@/contexts/LanguageContext";
 
 const HLS_SRC =
   "https://stream.mux.com/9JXDljEVWYwWu01PUkAemafDugK89o01BR6zqJ3aS9u00A.m3u8";
-
-const badges = [
-  { label: "Powered by", name: "Custom AI Agents", Icon: Bot },
-  { label: "Built with", name: "Automated Workflows", Icon: Workflow },
-  { label: "Engineered for", name: "Revenue Growth", Icon: Sparkles },
-];
-
-const sectors = [
-  "Hospitality",
-  "Tourism",
-  "Real Estate",
-  "Property Management",
-  "Crypto · Web3",
-  "Professional Services",
-  "B2B SaaS",
-];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -36,6 +22,14 @@ const fadeUp = {
 };
 
 export const Hero = () => {
+  const { t } = useT();
+
+  const badges = [
+    { label: t.hero.badge1Label, name: t.hero.badge1Name, Icon: Bot },
+    { label: t.hero.badge2Label, name: t.hero.badge2Name, Icon: Workflow },
+    { label: t.hero.badge3Label, name: t.hero.badge3Name, Icon: Sparkles },
+  ];
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
       {/* Ambient glow */}
@@ -44,7 +38,7 @@ export const Hero = () => {
 
       <Navbar />
 
-      {/* Background video — floating, pushed up from bottom */}
+      {/* Background video */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[35vh] h-[80vh] z-0">
         <VideoPlayer
           src={HLS_SRC}
@@ -66,7 +60,7 @@ export const Hero = () => {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22D3EE] opacity-75" />
             <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#22D3EE]" />
           </span>
-          Now onboarding Q3 partners — limited capacity
+          {t.hero.eyebrow}
         </motion.div>
 
         {/* Badges */}
@@ -97,10 +91,10 @@ export const Hero = () => {
           variants={fadeUp}
           className="font-medium tracking-tight leading-[0.95] text-[56px] sm:text-[72px] md:text-[84px] max-w-5xl bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
         >
-          The AI Partner That
+          {t.hero.headline1}
           <br />
           <span className="bg-gradient-to-r from-[#A78BFA] via-white to-[#22D3EE] bg-clip-text text-transparent">
-            Scales Your Business
+            {t.hero.headline2}
           </span>
         </motion.h1>
 
@@ -112,9 +106,7 @@ export const Hero = () => {
           variants={fadeUp}
           className="mt-6 max-w-2xl text-base sm:text-lg text-white/60 leading-relaxed"
         >
-          Viddix AI builds custom AI agents, SaaS platforms, automations, and growth strategy
-          <br className="hidden sm:block" />
-          that generate leads, cut busywork, and grow revenue — on autopilot.
+          {t.hero.subtext}
         </motion.p>
 
         {/* Buttons */}
@@ -125,19 +117,19 @@ export const Hero = () => {
           variants={fadeUp}
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
-          <a
-            href="#book"
+          <Link
+            to="/book"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-white to-zinc-200 px-6 py-3 text-sm font-medium text-black hover:shadow-[0_0_40px_rgba(167,139,250,0.4)] transition-all"
           >
-            Book a Free Strategy Call
+            {t.hero.cta1}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="#services"
+          </Link>
+          <Link
+            to="/services"
             className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-md px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/10 transition-colors"
           >
-            Explore Our AI Services
-          </a>
+            {t.hero.cta2}
+          </Link>
         </motion.div>
 
         {/* Micro proof */}
@@ -148,11 +140,11 @@ export const Hero = () => {
           variants={fadeUp}
           className="mt-6 text-xs text-white/40"
         >
-          Trusted by founders and operators shipping AI in production.
+          {t.hero.socialProof}
         </motion.p>
       </div>
 
-      {/* Trust logos */}
+      {/* Trust sectors */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.45 }}
@@ -161,10 +153,10 @@ export const Hero = () => {
       >
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-center text-[10px] uppercase tracking-[0.25em] text-white/40 mb-4">
-            Trusted by businesses operating in
+            {t.hero.trustedBy}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2">
-            {sectors.map((s) => (
+            {t.hero.sectors.map((s) => (
               <span
                 key={s}
                 className="text-xs text-white/70 border border-white/15 bg-white/5 backdrop-blur-md rounded-full px-3 py-1.5"

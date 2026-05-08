@@ -3,8 +3,11 @@ import { Navbar } from "@/components/Navbar";
 import { About } from "@/components/About";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+import { useT } from "@/contexts/LanguageContext";
 
 const AboutPage = () => {
+  const { t } = useT();
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
@@ -18,14 +21,12 @@ const AboutPage = () => {
           className="relative mx-auto max-w-3xl text-center"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
-            About
+            {t.about.pageEyebrow}
           </span>
           <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
-            We build AI that ships — and pays for itself.
+            {t.about.pageHeading}
           </h1>
-          <p className="mt-5 text-white/65 text-lg leading-relaxed">
-            Viddix AI is a modern AI agency for teams that want to move faster, sell more, and operate leaner. We design, build, and deploy the systems that get you there.
-          </p>
+          <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.about.pageSubtext}</p>
         </motion.div>
       </section>
 

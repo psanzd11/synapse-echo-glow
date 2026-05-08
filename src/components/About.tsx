@@ -1,23 +1,18 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Mail, Globe, Sparkles } from "lucide-react";
 import { LogoVideo } from "./LogoVideo";
-
-const values = [
-  {
-    title: "AI-native by default",
-    desc: "We don't bolt AI onto old workflows. We rebuild them around it.",
-  },
-  {
-    title: "Ship fast, measure faster",
-    desc: "Production deployments in weeks, with metrics tied directly to revenue.",
-  },
-  {
-    title: "Partners, not vendors",
-    desc: "We embed with your team and own outcomes — not just deliverables.",
-  },
-];
+import { useT } from "@/contexts/LanguageContext";
 
 export const About = () => {
+  const { t } = useT();
+
+  const values = [
+    { title: t.about.v1Title, desc: t.about.v1Desc },
+    { title: t.about.v2Title, desc: t.about.v2Desc },
+    { title: t.about.v3Title, desc: t.about.v3Desc },
+  ];
+
   return (
     <section id="about" className="relative bg-black text-white py-32 px-6 border-t border-white/5">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(34,211,238,0.06),transparent_60%)]" />
@@ -29,23 +24,13 @@ export const About = () => {
           transition={{ duration: 0.7 }}
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
-            About Us
+            {t.about.eyebrow}
           </span>
           <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
-            We're Viddix AI — your full-stack AI partner.
+            {t.about.heading}
           </h2>
-          <p className="mt-6 text-white/65 text-base sm:text-lg leading-relaxed">
-            Viddix AI is a modern AI agency for businesses that want to move faster, sell more,
-            and operate leaner. We design, build, and deploy custom AI systems — voice agents,
-            workflow automations, research engines — alongside custom SaaS platforms and
-            category-defining marketing strategy, engineered to generate measurable revenue
-            and remove manual work for good.
-          </p>
-          <p className="mt-4 text-white/55 text-base leading-relaxed">
-            From founders to operations leads, our clients trust us to ship AI that works in
-            production — not demos. We embed with your team, scope what truly matters, and
-            deliver fast.
-          </p>
+          <p className="mt-6 text-white/65 text-base sm:text-lg leading-relaxed">{t.about.p1}</p>
+          <p className="mt-4 text-white/55 text-base leading-relaxed">{t.about.p2}</p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
             <a
@@ -55,12 +40,12 @@ export const About = () => {
               <Mail className="h-4 w-4" />
               viddixai@gmail.com
             </a>
-            <a
-              href="#book"
+            <Link
+              to="/book"
               className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 backdrop-blur-md px-6 py-3 text-sm font-medium text-white/90 hover:bg-white/10 transition-colors"
             >
-              Book a Call
-            </a>
+              {t.about.bookCall}
+            </Link>
           </div>
         </motion.div>
 
@@ -77,7 +62,7 @@ export const About = () => {
               <LogoVideo className="h-16 w-16 object-contain" />
               <div>
                 <div className="text-lg font-medium">Viddix AI</div>
-                <div className="text-xs text-white/50">Engineered for businesses that move fast</div>
+                <div className="text-xs text-white/50">{t.about.tagline}</div>
               </div>
             </div>
 
@@ -96,13 +81,16 @@ export const About = () => {
             </ul>
 
             <div className="relative mt-8 grid grid-cols-2 gap-3 pt-6 border-t border-white/10 text-sm">
-              <a href="mailto:viddixai@gmail.com" className="flex items-center gap-2 text-white/70 hover:text-white">
+              <a
+                href="mailto:viddixai@gmail.com"
+                className="flex items-center gap-2 text-white/70 hover:text-white"
+              >
                 <Mail className="h-4 w-4 text-[#22D3EE]" />
                 viddixai@gmail.com
               </a>
               <div className="flex items-center gap-2 text-white/70">
                 <Globe className="h-4 w-4 text-[#A78BFA]" />
-                Remote · Worldwide
+                {t.about.remote}
               </div>
             </div>
           </div>

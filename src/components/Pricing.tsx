@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
-
-const budgets = ["< $2k/mo", "$2k–5k/mo", "$5k–15k/mo", "$15k–30k/mo", "$30k+/mo"];
-const timelines = ["ASAP", "Within 1 month", "1–3 months", "Just exploring"];
+import { useT } from "@/contexts/LanguageContext";
 
 export const Pricing = () => {
+  const { t } = useT();
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     company: "",
-    budget: budgets[1],
-    timeline: timelines[1],
+    budget: t.pricing.budgets[0],
+    timeline: t.pricing.timelines[1],
     details: "",
   });
 
@@ -22,9 +21,9 @@ export const Pricing = () => {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const subject = encodeURIComponent(`Quote request — ${form.company || form.name}`);
+    const subject = encodeURIComponent(`Proposal request — ${form.company || form.name}`);
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nBudget: ${form.budget}\nTimeline: ${form.timeline}\n\nDetails:\n${form.details}`,
+      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nRetainer range: ${form.budget}\nTimeline: ${form.timeline}\n\nProject details:\n${form.details}`,
     );
     window.location.href = `mailto:viddixai@gmail.com?subject=${subject}&body=${body}`;
     setTimeout(() => {
@@ -45,14 +44,12 @@ export const Pricing = () => {
           className="text-center max-w-2xl mx-auto mb-12"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
-            Pricing
+            {t.pricing.eyebrow}
           </span>
           <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-            Custom-built. Transparently priced.
+            {t.pricing.heading}
           </h2>
-          <p className="mt-4 text-white/60 text-base sm:text-lg">
-            Every project is scoped to your business. Tell us what you need — we'll send a quote within 24 hours.
-          </p>
+          <p className="mt-4 text-white/60 text-base sm:text-lg">{t.pricing.subtext}</p>
         </motion.div>
 
         <motion.div
@@ -69,14 +66,16 @@ export const Pricing = () => {
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#22D3EE]/10 border border-[#22D3EE]/30 mb-5">
                 <Check className="h-6 w-6 text-[#22D3EE]" />
               </div>
-              <h3 className="text-2xl font-medium mb-2">Quote request sent.</h3>
+              <h3 className="text-2xl font-medium mb-2">{t.pricing.successTitle}</h3>
               <p className="text-white/60 text-sm">
-                We'll get back to you at <span className="text-white">{form.email}</span> within 24 hours.
+                {t.pricing.successDescPrefix}{" "}
+                <span className="text-white">{form.email}</span>{" "}
+                {t.pricing.successDescSuffix}
               </p>
             </div>
           ) : (
             <form onSubmit={submit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <Field label="Full name" required>
+              <Field label={t.pricing.formName} required>
                 <input
                   required
                   value={form.name}
@@ -85,7 +84,7 @@ export const Pricing = () => {
                   placeholder="Jane Doe"
                 />
               </Field>
-              <Field label="Work email" required>
+              <Field label={t.pricing.formEmail} required>
                 <input
                   required
                   type="email"
@@ -95,7 +94,7 @@ export const Pricing = () => {
                   placeholder="jane@company.com"
                 />
               </Field>
-              <Field label="Company" className="sm:col-span-2">
+              <Field label={t.pricing.formCompany} className="sm:col-span-2">
                 <input
                   value={form.company}
                   onChange={(e) => set("company", e.target.value)}
@@ -104,45 +103,50 @@ export const Pricing = () => {
                 />
               </Field>
 
-              <Field label="Monthly retainer range">
+              <Field label={t.pricing.formBudget}>
                 <div className="flex flex-wrap gap-2">
-                  {budgets.map((b) => (
+                  {t.pricing.budgets.map((b) => (
                     <Chip key={b} active={form.budget === b} onClick={() => set("budget", b)}>
                       {b}
                     </Chip>
                   ))}
                 </div>
               </Field>
-              <Field label="Timeline">
+              <Field label={t.pricing.formTimeline}>
                 <div className="flex flex-wrap gap-2">
-                  {timelines.map((t) => (
-                    <Chip key={t} active={form.timeline === t} onClick={() => set("timeline", t)}>
-                      {t}
+                  {t.pricing.timelines.map((tl) => (
+                    <Chip key={tl} active={form.timeline === tl} onClick={() => set("timeline", tl)}>
+                      {tl}
                     </Chip>
                   ))}
                 </div>
               </Field>
 
-              <Field label="Project details" className="sm:col-span-2">
+              <Field label={t.pricing.formDetails} className="sm:col-span-2">
                 <textarea
                   rows={4}
                   value={form.details}
                   onChange={(e) => set("details", e.target.value)}
                   className={`${inputCls} resize-none`}
-                  placeholder="Tell us about your goals, current stack, and what success looks like…"
+                  placeholder={t.pricing.formDetailsPlaceholder}
                 />
               </Field>
 
               <div className="sm:col-span-2 flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-                <p className="text-xs text-white/40">
-                  By submitting you agree to be contacted by Viddix AI. No spam.
-                </p>
+                <p className="text-xs text-white/40">{t.pricing.formDisclaimer}</p>
                 <button
                   type="submit"
                   disabled={loading}
                   className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-white to-zinc-200 px-7 py-3 text-sm font-medium text-black hover:shadow-[0_0_50px_rgba(167,139,250,0.5)] transition-all disabled:opacity-60"
                 >
-                  {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <>Get My Quote <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></>}
+                  {loading ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <>
+                      {t.pricing.formSubmit}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    </>
+                  )}
                 </button>
               </div>
             </form>

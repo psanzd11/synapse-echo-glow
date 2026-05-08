@@ -4,31 +4,13 @@ import { Navbar } from "@/components/Navbar";
 import { Services } from "@/components/Services";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+import { useT } from "@/contexts/LanguageContext";
 
-const steps = [
-  {
-    Icon: Compass,
-    title: "Discover",
-    desc: "We map your workflows, identify the highest-leverage automation opportunities, and align on success metrics.",
-  },
-  {
-    Icon: Hammer,
-    title: "Build",
-    desc: "We design and engineer your AI systems — agents, integrations, and dashboards — tailored to your stack.",
-  },
-  {
-    Icon: Rocket,
-    title: "Deploy",
-    desc: "We ship to production with your team, train operators, and instrument everything we build.",
-  },
-  {
-    Icon: RefreshCcw,
-    title: "Iterate",
-    desc: "We keep improving — measuring impact, fine-tuning agents, and shipping new capabilities every sprint.",
-  },
-];
+const stepIcons = [Compass, Hammer, Rocket, RefreshCcw];
 
 const ServicesPage = () => {
+  const { t } = useT();
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
@@ -42,14 +24,12 @@ const ServicesPage = () => {
           className="relative mx-auto max-w-3xl text-center"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
-            Services
+            {t.services.pageEyebrow}
           </span>
           <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
-            One partner. The entire stack.
+            {t.services.pageHeading}
           </h1>
-          <p className="mt-5 text-white/65 text-lg leading-relaxed">
-            Custom SaaS platforms, AI agents, full automations, and growth strategy — we design, build, and deploy the systems modern businesses run on.
-          </p>
+          <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.services.pageSubtext}</p>
         </motion.div>
       </section>
 
@@ -66,31 +46,36 @@ const ServicesPage = () => {
             className="text-center max-w-2xl mx-auto mb-16"
           >
             <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
-              Our process
+              {t.services.processEyebrow}
             </span>
             <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-              From scope to shipped — in weeks, not quarters.
+              {t.services.processHeading}
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {steps.map(({ Icon, title, desc }, i) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6"
-              >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#7C5CFF]/20 to-[#22D3EE]/10 border border-white/10 mb-5">
-                  <Icon className="h-5 w-5 text-white" />
-                </div>
-                <div className="text-xs text-white/40 mb-2">Step {i + 1}</div>
-                <h3 className="text-lg font-medium text-white mb-2">{title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
+            {t.services.steps.map(({ title, desc }, i) => {
+              const Icon = stepIcons[i];
+              return (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: i * 0.08 }}
+                  className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6"
+                >
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#7C5CFF]/20 to-[#22D3EE]/10 border border-white/10 mb-5">
+                    <Icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="text-xs text-white/40 mb-2">
+                    {t.services.stepLabel} {i + 1}
+                  </div>
+                  <h3 className="text-lg font-medium text-white mb-2">{title}</h3>
+                  <p className="text-sm text-white/55 leading-relaxed">{desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

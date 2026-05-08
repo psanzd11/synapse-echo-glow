@@ -4,8 +4,11 @@ import { CaseStudies } from "@/components/CaseStudies";
 import { Proof } from "@/components/Proof";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+import { useT } from "@/contexts/LanguageContext";
 
 const CaseStudiesPage = () => {
+  const { t } = useT();
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
@@ -19,14 +22,12 @@ const CaseStudiesPage = () => {
           className="relative mx-auto max-w-3xl text-center"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
-            Case Studies
+            {t.caseStudies.pageEyebrow}
           </span>
           <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
-            Outcomes, not deliverables.
+            {t.caseStudies.pageHeading}
           </h1>
-          <p className="mt-5 text-white/65 text-lg leading-relaxed">
-            Custom SaaS platforms, AI agents, automations, and growth engines we've shipped — each tied to measurable results for the businesses using them.
-          </p>
+          <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.caseStudies.pageSubtext}</p>
         </motion.div>
       </section>
 

@@ -1,7 +1,10 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { useT } from "@/contexts/LanguageContext";
 
 const TermsPage = () => {
+  const { t } = useT();
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
@@ -10,10 +13,10 @@ const TermsPage = () => {
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-[#22D3EE]/12 blur-[140px]" />
         <div className="relative mx-auto max-w-3xl">
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
-            Legal
+            {t.legal.eyebrow}
           </span>
           <h1 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.1]">
-            Terms of Service
+            {t.legal.termsHeading}
           </h1>
           <p className="mt-4 text-sm text-white/50">
             Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}

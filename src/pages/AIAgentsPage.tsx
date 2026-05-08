@@ -4,26 +4,13 @@ import { Navbar } from "@/components/Navbar";
 import { AIAgents } from "@/components/AIAgents";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
+import { useT } from "@/contexts/LanguageContext";
 
-const pillars = [
-  {
-    Icon: Brain,
-    title: "Trained on your business",
-    desc: "Every agent is grounded in your knowledge base, tone, and workflows — not generic LLM outputs.",
-  },
-  {
-    Icon: Network,
-    title: "Connected to your stack",
-    desc: "Agents read and write directly to your CRM, calendar, comms, and databases — no copy-paste in between.",
-  },
-  {
-    Icon: ShieldCheck,
-    title: "Observed and governed",
-    desc: "Full traceability, guardrails, and human-in-the-loop where it matters. You stay in control.",
-  },
-];
+const pillarIcons = [Brain, Network, ShieldCheck];
 
 const AIAgentsPage = () => {
+  const { t } = useT();
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Navbar />
@@ -37,14 +24,12 @@ const AIAgentsPage = () => {
           className="relative mx-auto max-w-3xl text-center"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
-            AI Agents
+            {t.aiAgents.pageEyebrow}
           </span>
           <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
-            Your 24/7 AI workforce.
+            {t.aiAgents.pageHeading}
           </h1>
-          <p className="mt-5 text-white/65 text-lg leading-relaxed">
-            Voice, personal, workflow, and research agents — purpose-built to take work off your team and amplify what humans do best.
-          </p>
+          <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.aiAgents.pageSubtext}</p>
         </motion.div>
       </section>
 
@@ -61,30 +46,33 @@ const AIAgentsPage = () => {
             className="text-center max-w-2xl mx-auto mb-16"
           >
             <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
-              How our agents work
+              {t.aiAgents.pillarsEyebrow}
             </span>
             <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-              Built for production. Not demos.
+              {t.aiAgents.pillarsHeading}
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {pillars.map(({ Icon, title, desc }, i) => (
-              <motion.div
-                key={title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-7"
-              >
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#7C5CFF]/20 to-[#22D3EE]/10 border border-white/10 mb-5">
-                  <Icon className="h-5 w-5 text-white" />
-                </div>
-                <h3 className="text-xl font-medium text-white mb-2">{title}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{desc}</p>
-              </motion.div>
-            ))}
+            {t.aiAgents.pillars.map(({ title, desc }, i) => {
+              const Icon = pillarIcons[i];
+              return (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: i * 0.08 }}
+                  className="relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-7"
+                >
+                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#7C5CFF]/20 to-[#22D3EE]/10 border border-white/10 mb-5">
+                    <Icon className="h-5 w-5 text-white" />
+                  </div>
+                  <h3 className="text-xl font-medium text-white mb-2">{title}</h3>
+                  <p className="text-sm text-white/55 leading-relaxed">{desc}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
