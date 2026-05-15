@@ -23,7 +23,7 @@ export const Pricing = () => {
     setLoading(true);
     const subject = encodeURIComponent(`Proposal request — ${form.company || form.name}`);
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nRetainer range: ${form.budget}\nTimeline: ${form.timeline}\n\nProject details:\n${form.details}`,
+      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nBudget range: ${form.budget}\nTimeline: ${form.timeline}\n\nProject details:\n${form.details}`,
     );
     window.location.href = `mailto:viddixai@gmail.com?subject=${subject}&body=${body}`;
     setTimeout(() => {
