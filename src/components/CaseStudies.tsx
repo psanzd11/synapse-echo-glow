@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
+import { AnimatedMetric } from "@/components/AnimatedMetric";
 import { useT } from "@/contexts/LanguageContext";
 
 export const CaseStudies = () => {
@@ -56,13 +57,15 @@ export const CaseStudies = () => {
                     {c.headline}
                   </h3>
                   <div className="grid grid-cols-3 gap-3 pt-5 border-t border-white/10">
-                    {c.metrics.map((m) => (
-                      <div key={m.v}>
-                        <div className="text-xl sm:text-2xl font-medium bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
-                          {m.k}
-                        </div>
-                        <div className="text-[10px] text-white/50 mt-1 leading-tight">{m.v}</div>
-                      </div>
+                    {c.metrics.map((m, idx) => (
+                      <AnimatedMetric
+                        key={m.label}
+                        label={m.label}
+                        before={m.before}
+                        after={m.after}
+                        variant="compact"
+                        delay={idx * 120}
+                      />
                     ))}
                   </div>
                 </div>

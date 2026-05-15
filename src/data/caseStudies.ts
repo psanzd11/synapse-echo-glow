@@ -1,3 +1,19 @@
+export type CaseStudyMetric = {
+  /** Short label shown under the animated number (e.g. "Pickup time"). */
+  label: string;
+  /** Value before the engagement (e.g. "$480", "4 min", "9-5"). */
+  before: string;
+  /** Value after the engagement (e.g. "$278", "<3s", "24/7"). */
+  after: string;
+};
+
+export type CaseStudyScreenshot = {
+  src: string;
+  caption?: string;
+  /** Optional aspect ratio hint (default 16/9). */
+  ratio?: number;
+};
+
 export type CaseStudy = {
   slug: string;
   tag: string;
@@ -5,12 +21,20 @@ export type CaseStudy = {
   industry: string;
   headline: string;
   summary: string;
-  metrics: { k: string; v: string }[];
+  metrics: CaseStudyMetric[];
   accent: string;
   challenge: string;
   approach: string[];
   outcome: string[];
   stack?: string[];
+  /** Optional cover image (1600px wide recommended), shown above the hero. */
+  coverImage?: string;
+  /** Optional gallery of screenshots rendered in a dedicated block on the detail page. */
+  screenshots?: CaseStudyScreenshot[];
+  /** Optional video URL — YouTube/Vimeo embed URL or a self-hosted mp4/webm. */
+  videoUrl?: string;
+  /** Optional pull-quote from the client. */
+  quote?: { text: string; author: string; role?: string };
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -23,9 +47,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A boutique hotel group operating 12 properties was losing hours every day switching between disconnected legacy systems. We replaced them all with a single, custom PMS designed around how their teams actually work.",
     metrics: [
-      { k: "12", v: "properties live" },
-      { k: "4 → 1", v: "tools consolidated" },
-      { k: "60%", v: "faster check-in" },
+      { label: "Check-in time", before: "8 min", after: "3 min" },
+      { label: "Tools used", before: "4", after: "1" },
+      { label: "Properties live", before: "0", after: "12" },
     ],
     accent: "from-[#7C5CFF]/30 to-[#22D3EE]/10",
     challenge:
@@ -51,9 +75,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A regional tourism network coordinated 200+ independent operators with no shared technology. We built a single platform that unified discovery, booking, and operator management.",
     metrics: [
-      { k: "200+", v: "operators onboarded" },
-      { k: "24/7", v: "service availability" },
-      { k: "3.2×", v: "booking conversion" },
+      { label: "Booking conversion", before: "1.4%", after: "4.5%" },
+      { label: "Operators live", before: "12", after: "200" },
+      { label: "Coverage", before: "9-5", after: "24/7" },
     ],
     accent: "from-[#22D3EE]/30 to-[#A78BFA]/10",
     challenge:
@@ -78,9 +102,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A professional services firm was paying for three separate tools that didn't talk to each other. We built one platform tailored to their pipeline-to-delivery flow — and got the whole team using it in 30 days.",
     metrics: [
-      { k: "3", v: "tools replaced" },
-      { k: "$84k", v: "annual SaaS savings" },
-      { k: "100%", v: "team adoption in 30d" },
+      { label: "SaaS tools", before: "3", after: "1" },
+      { label: "Annual SaaS cost", before: "$98k", after: "$14k" },
+      { label: "Daily active use", before: "42%", after: "98%" },
     ],
     accent: "from-[#A78BFA]/30 to-[#7C5CFF]/10",
     challenge:
@@ -91,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
       "Ran a 30-day adoption push with role-based onboarding for partners, ops, and delivery.",
     ],
     outcome: [
-      "100% team adoption inside 30 days — measured by daily active usage.",
+      "Near-full team adoption inside 30 days — measured by daily active usage.",
       "$84k/year saved on SaaS subscriptions and reconciliation work.",
       "Pipeline, delivery, and billing now live in a single workflow.",
     ],
@@ -105,9 +129,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A US crypto sector leader needed sharper positioning and a marketing engine that could scale qualified pipeline in a post-bear-market environment. We owned strategy, execution, and attribution end-to-end.",
     metrics: [
-      { k: "5×", v: "qualified pipeline" },
-      { k: "−42%", v: "CAC" },
-      { k: "8 wks", v: "to first wins" },
+      { label: "Pipeline / month", before: "$120k", after: "$610k" },
+      { label: "CAC", before: "$480", after: "$278" },
+      { label: "Time to first wins", before: "—", after: "8 wks" },
     ],
     accent: "from-[#7C5CFF]/30 to-[#22D3EE]/10",
     challenge:
@@ -132,9 +156,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A sector-leading service business was losing leads at the very first touchpoint — missed calls, slow callbacks, inconsistent qualifying. We deployed a voice agent that picks up every call and a speed-to-lead pipeline that routes the right ones to humans instantly.",
     metrics: [
-      { k: "<3s", v: "average pickup" },
-      { k: "94%", v: "calls answered" },
-      { k: "+47%", v: "qualified leads" },
+      { label: "Avg pickup", before: "4 min", after: "<3s" },
+      { label: "Calls answered", before: "61%", after: "94%" },
+      { label: "Qualified leads / mo", before: "48", after: "71" },
     ],
     accent: "from-[#22D3EE]/30 to-[#7C5CFF]/10",
     challenge:
@@ -159,9 +183,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Operators spent hours every day collecting client data and writing status emails by hand. We replaced the entire flow with an end-to-end automation — zero manual emails, complete data capture.",
     metrics: [
-      { k: "100%", v: "data captured" },
-      { k: "0", v: "manual emails" },
-      { k: "12h", v: "saved per agent/wk" },
+      { label: "Data captured", before: "72%", after: "100%" },
+      { label: "Manual emails / wk", before: "120", after: "0" },
+      { label: "Hours saved / wk", before: "0", after: "12" },
     ],
     accent: "from-[#A78BFA]/30 to-[#22D3EE]/10",
     challenge:
@@ -186,9 +210,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A property management firm drafted every rental, maintenance, and vendor contract by hand. We replaced the manual workflow with an agent that drafts, personalizes, and compliance-checks contracts in seconds.",
     metrics: [
-      { k: "30s", v: "to draft" },
-      { k: "100%", v: "compliance check" },
-      { k: "−85%", v: "manual editing" },
+      { label: "Draft time", before: "20 min", after: "30 sec" },
+      { label: "Compliance pass", before: "ad hoc", after: "100%" },
+      { label: "Manual edits", before: "100%", after: "15%" },
     ],
     accent: "from-[#7C5CFF]/30 to-[#A78BFA]/10",
     challenge:
@@ -213,9 +237,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A real estate investment group was reviewing thousands of listings by hand. We built an agent that continuously scans the market, scores opportunities against their thesis, and surfaces only the top deals.",
     metrics: [
-      { k: "1000s", v: "listings scanned/day" },
-      { k: "Top 5%", v: "deals surfaced" },
-      { k: "10×", v: "analyst throughput" },
+      { label: "Listings / day", before: "120", after: "1,200" },
+      { label: "Surfaced rate", before: "all", after: "top 5%" },
+      { label: "Deals / analyst / wk", before: "8", after: "80" },
     ],
     accent: "from-[#22D3EE]/30 to-[#A78BFA]/10",
     challenge:
@@ -240,9 +264,9 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "A B2B services company couldn't hire fast enough to keep up with both inbound support and outbound sales. We deployed two specialized agents that work in tandem around the clock.",
     metrics: [
-      { k: "24/7", v: "coverage" },
-      { k: "+38%", v: "outbound meetings" },
-      { k: "92%", v: "CSAT" },
+      { label: "Coverage", before: "9-6", after: "24/7" },
+      { label: "Outbound meetings / mo", before: "32", after: "44" },
+      { label: "CSAT", before: "78%", after: "92%" },
     ],
     accent: "from-[#A78BFA]/30 to-[#7C5CFF]/10",
     challenge:
