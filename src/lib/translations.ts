@@ -73,34 +73,16 @@ const en = {
     pillarsHeading: 'Built for production. Not demos.',
     categories: [
       {
-        title: 'Voice Agents',
-        desc: 'Human-like voice agents that pick up every call, book appointments, and close sales 24/7.',
-        items: ['Speed-to-lead — pickup in <3s', '24/7 outbound & inbound sales', 'Reception & appointment booking'],
-        price: '$500 – $2,500/mo + $0.15/min',
-      },
-      {
-        title: 'AI Assistant',
-        desc: 'Private AI assistants that take work off your plate and amplify your output.',
-        items: ['Inbound/outbound calls on your behalf', 'Drafts emails & replies in your tone', 'Manages calendar & schedules autonomously'],
-        price: '$1,000 – $5,000/mo',
-      },
-      {
-        title: 'Workflow Agents',
-        desc: 'Custom automations that run your operations end-to-end across every tool you use.',
-        items: ['Contract generation & personalization', 'Client follow-up email automation', 'CRM optimization & orchestration'],
-        price: '$1,000 – $5,000/mo',
-      },
-      {
-        title: 'Data & Research Agents',
-        desc: 'Agents that gather, analyze, and report — turning raw data into decisions.',
-        items: ['Real estate investment scoring', 'Market & competitor research', 'Automated reporting & QA'],
-        price: '$1,000 – $4,000/mo',
-      },
-      {
         title: 'WhatsApp/Instagram/SMS Agent',
         desc: 'Conversational agents that book, sell, and support 24/7 on WhatsApp, Instagram, SMS, and your website — fully synced with your CRM.',
         items: ['24/7 automated reservations & appointments', 'Multi-channel: WhatsApp, Instagram, SMS, web widget', 'Live CRM dashboard with full conversation history'],
         price: '$500 – $2,500/mo',
+      },
+      {
+        title: 'Voice Agents',
+        desc: 'Human-like voice agents that pick up every call, book appointments, and close sales 24/7.',
+        items: ['Speed-to-lead — pickup in <3s', '24/7 outbound & inbound sales', 'Reception & appointment booking'],
+        price: '$500 – $2,500/mo + $0.15/min',
       },
       {
         title: 'AI Receptionist',
@@ -109,10 +91,28 @@ const en = {
         price: '$500 – $1,500/mo + $0.15/min',
       },
       {
+        title: 'Data & Research Agents',
+        desc: 'Agents that gather, analyze, and report — turning raw data into decisions.',
+        items: ['Real estate investment scoring', 'Market & competitor research', 'Automated reporting & QA'],
+        price: '$1,000 – $4,000/mo',
+      },
+      {
+        title: 'AI Assistant',
+        desc: 'Private AI assistants that take work off your plate and amplify your output.',
+        items: ['Inbound/outbound calls on your behalf', 'Drafts emails & replies in your tone', 'Manages calendar & schedules autonomously'],
+        price: '$2,500 – $7,500/mo',
+      },
+      {
         title: 'Email AI Agent',
         desc: 'Inbox copilots that triage every thread, draft tone-matched replies, run follow-ups, and surface the urgent ones — your team only handles what matters.',
         items: ['Auto-triage & smart labeling', 'Tone-matched drafted replies', 'Follow-ups on autopilot'],
         price: '$500 – $1,500/mo',
+      },
+      {
+        title: 'Workflow Agents',
+        desc: 'Custom automations that run your operations end-to-end across every tool you use.',
+        items: ['Contract generation & personalization', 'Client follow-up email automation', 'CRM optimization & orchestration'],
+        price: '$1,000 – $5,000/mo',
       },
     ],
     iphoneCall: {
@@ -121,6 +121,18 @@ const en = {
       slideText: 'slide to demo',
       message: 'Message',
       voicemail: 'Voicemail',
+    },
+    workflowPreview: {
+      liveLabel: 'Live workflow',
+      doneLabel: 'completed',
+      steps: [
+        { label: 'Trigger', sub: 'New lead', icon: 'zap' },
+        { label: 'AI process', sub: 'Enrich & score', icon: 'sparkles' },
+        { label: 'Email', sub: 'Welcome sent', icon: 'mail' },
+        { label: 'CRM', sub: 'Logged in HubSpot', icon: 'database' },
+        { label: 'Slack', sub: 'Sales notified', icon: 'message' },
+        { label: 'Done', sub: '8s end-to-end', icon: 'check' },
+      ],
     },
     aiAssistant: {
       headerLabel: 'AI Assistant',
@@ -455,34 +467,16 @@ const es: typeof en = {
     pillarsHeading: 'Construidos para producción. No demos.',
     categories: [
       {
-        title: 'Agentes de Voz',
-        desc: 'Agentes de voz que responden cada llamada, reservan citas y cierran ventas 24/7.',
-        items: ['Velocidad de respuesta — pickup en <3s', 'Ventas salientes y entrantes 24/7', 'Recepción y agenda de citas'],
-        price: '$500 – $2,500/mes + $0.15/min',
-      },
-      {
-        title: 'Asistente IA',
-        desc: 'Asistentes de IA privados que reducen tu carga de trabajo y amplifican tu productividad.',
-        items: ['Llamadas entrantes y salientes en tu nombre', 'Redacta emails y respuestas en tu tono', 'Gestiona calendario y agendamientos'],
-        price: '$1,000 – $5,000/mes',
-      },
-      {
-        title: 'Agentes de Flujo de Trabajo',
-        desc: 'Automatizaciones a medida que gestionan tus operaciones de extremo a extremo.',
-        items: ['Generación y personalización de contratos', 'Automatización de emails de seguimiento', 'Optimización y orquestación de CRM'],
-        price: '$1,000 – $5,000/mes',
-      },
-      {
-        title: 'Agentes de Datos e Investigación',
-        desc: 'Agentes que recopilan, analizan y reportan — convirtiendo datos en decisiones.',
-        items: ['Puntuación de inversiones inmobiliarias', 'Investigación de mercado y competencia', 'Informes automáticos y QA'],
-        price: '$1,000 – $4,000/mes',
-      },
-      {
         title: 'Agente de WhatsApp/Instagram/SMS',
         desc: 'Agentes conversacionales que reservan, venden y atienden 24/7 por WhatsApp, Instagram, SMS y tu web — totalmente sincronizados con tu CRM.',
         items: ['Reservas y citas automáticas 24/7', 'Multicanal: WhatsApp, Instagram, SMS, widget web', 'Panel CRM en vivo con historial completo de conversaciones'],
         price: '$500 – $2,500/mes',
+      },
+      {
+        title: 'Agentes de Voz',
+        desc: 'Agentes de voz que responden cada llamada, reservan citas y cierran ventas 24/7.',
+        items: ['Velocidad de respuesta — pickup en <3s', 'Ventas salientes y entrantes 24/7', 'Recepción y agenda de citas'],
+        price: '$500 – $2,500/mes + $0.15/min',
       },
       {
         title: 'Recepcionista IA',
@@ -491,10 +485,28 @@ const es: typeof en = {
         price: '$500 – $1,500/mes + $0.15/min',
       },
       {
+        title: 'Agentes de Datos e Investigación',
+        desc: 'Agentes que recopilan, analizan y reportan — convirtiendo datos en decisiones.',
+        items: ['Puntuación de inversiones inmobiliarias', 'Investigación de mercado y competencia', 'Informes automáticos y QA'],
+        price: '$1,000 – $4,000/mes',
+      },
+      {
+        title: 'Asistente IA',
+        desc: 'Asistentes de IA privados que reducen tu carga de trabajo y amplifican tu productividad.',
+        items: ['Llamadas entrantes y salientes en tu nombre', 'Redacta emails y respuestas en tu tono', 'Gestiona calendario y agendamientos'],
+        price: '$2,500 – $7,500/mes',
+      },
+      {
         title: 'Agente de Email IA',
         desc: 'Copilotos de bandeja que clasifican cada hilo, redactan respuestas con tu tono, gestionan seguimientos y elevan lo urgente — tu equipo solo trata lo que importa.',
         items: ['Triaje automático y etiquetado inteligente', 'Respuestas redactadas con tu tono', 'Seguimientos en piloto automático'],
         price: '$500 – $1,500/mes',
+      },
+      {
+        title: 'Agentes de Flujo de Trabajo',
+        desc: 'Automatizaciones a medida que gestionan tus operaciones de extremo a extremo.',
+        items: ['Generación y personalización de contratos', 'Automatización de emails de seguimiento', 'Optimización y orquestación de CRM'],
+        price: '$1,000 – $5,000/mes',
       },
     ],
     iphoneCall: {
@@ -503,6 +515,18 @@ const es: typeof en = {
       slideText: 'desliza para probar',
       message: 'Mensaje',
       voicemail: 'Buzón',
+    },
+    workflowPreview: {
+      liveLabel: 'Workflow en vivo',
+      doneLabel: 'completado',
+      steps: [
+        { label: 'Trigger', sub: 'Nuevo lead', icon: 'zap' },
+        { label: 'IA process', sub: 'Enriquecer y scorear', icon: 'sparkles' },
+        { label: 'Email', sub: 'Bienvenida enviada', icon: 'mail' },
+        { label: 'CRM', sub: 'Logueado en HubSpot', icon: 'database' },
+        { label: 'Slack', sub: 'Ventas notificadas', icon: 'message' },
+        { label: 'Listo', sub: '8s end-to-end', icon: 'check' },
+      ],
     },
     aiAssistant: {
       headerLabel: 'Asistente IA',
