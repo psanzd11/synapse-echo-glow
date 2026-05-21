@@ -220,3 +220,144 @@ html.light .from-white\/\[0\.06\].to-white\/\[0\.02\] {
 html.light .text-black {
   color: #0f172a !important;
 }
+
+/* =====================================================
+   AI Agents previews — light mode adaptations
+   Targets: WhatsAppChatPreview, IPhoneCallPreview frame,
+   AIAssistantPreview, WorkflowCarousel, WorkflowPreview
+   ===================================================== */
+
+/* Outer preview cards: replace the dark gradient (#1c1d2a → #0d0e16)
+   with a soft light gradient so the previews don't read as dark blocks
+   sitting on top of a light page. */
+html.light .from-\[\#1c1d2a\] {
+  --tw-gradient-from: #ffffff var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(255, 255, 255, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+html.light .to-\[\#0d0e16\] {
+  --tw-gradient-to: rgba(241, 245, 249, 0.95) var(--tw-gradient-to-position) !important;
+}
+
+/* WhatsApp outer card */
+html.light .bg-\[\#0b0b10\]\/85 {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+/* WhatsApp online-dot ring (was matched to dark card bg) */
+html.light .border-\[\#0b0b10\] {
+  border-color: #ffffff !important;
+}
+
+/* Soften the purple ambient drop shadow on preview cards */
+html.light .shadow-\[0_20px_60px_-15px_rgba\(124\,92\,255\,0\.4\)\] {
+  box-shadow: 0 18px 50px -18px rgba(124, 92, 255, 0.22) !important;
+}
+html.light .shadow-\[0_20px_60px_-15px_rgba\(124\,92\,255\,0\.35\)\] {
+  box-shadow: 0 18px 50px -18px rgba(124, 92, 255, 0.20) !important;
+}
+
+/* Surfaces that weren't covered by the base override block */
+html.light .bg-white\/\[0\.07\] {
+  background-color: rgba(15, 23, 42, 0.06) !important;
+}
+html.light .bg-white\/\[0\.08\] {
+  background-color: rgba(15, 23, 42, 0.07) !important;
+}
+html.light .bg-white\/15 {
+  background-color: rgba(15, 23, 42, 0.10) !important;
+}
+
+/* Pipeline connector idle track — needs to stay visible on light bg */
+html.light .bg-white\/\[0\.08\].rounded-full {
+  background-color: rgba(15, 23, 42, 0.10) !important;
+}
+
+/* WhatsApp typing dots and other low-opacity white pieces */
+html.light .bg-white\/40 {
+  background-color: rgba(15, 23, 42, 0.32) !important;
+}
+html.light .bg-white\/55 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+}
+html.light .bg-white\/85 {
+  background-color: rgba(15, 23, 42, 0.75) !important;
+}
+
+/* Translucent borders that anchor against the previous dark bg */
+html.light .border-white\/25 {
+  border-color: rgba(15, 23, 42, 0.22) !important;
+}
+html.light .border-white\/30 {
+  border-color: rgba(15, 23, 42, 0.25) !important;
+}
+
+/* AI Assistant labeled-pill backdrop */
+html.light .bg-white\/\[0\.05\] {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+/* AI Assistant: AE-chip / focus-block tints — keep colors but improve readability
+   on light bg by deepening the colored text used inside them */
+html.light .text-\[\#22c55e\] {
+  color: #15803d !important;
+}
+html.light .text-\[\#22D3EE\] {
+  color: #0e7490 !important;
+}
+html.light .text-\[\#A78BFA\] {
+  color: #6d28d9 !important;
+}
+
+/* The bg-clip-text gradient override already exists above — applies to
+   AnimatedMetric and section headings without further work. */
+
+/* =====================================================
+   IPhoneCallPreview — light-mode wallpaper
+   The device kept its dark 3-stop gradient (#3a4151 / #262731 / #10111a)
+   even in light mode, leaving a dark slab on a light page. Replace with
+   a soft light wallpaper and soften the cyan ambient shadow.
+   ===================================================== */
+
+html.light .from-\[\#3a4151\] {
+  --tw-gradient-from: #f8fafc var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: rgba(248, 250, 252, 0) var(--tw-gradient-to-position) !important;
+  --tw-gradient-stops:
+    var(--tw-gradient-from),
+    var(--tw-gradient-via, rgba(248, 250, 252, 0))
+      var(--tw-gradient-via-position, 50%),
+    var(--tw-gradient-to) !important;
+}
+html.light .via-\[\#262731\] {
+  --tw-gradient-via: #eef2f7 !important;
+  --tw-gradient-via-position: 50% !important;
+  --tw-gradient-stops:
+    var(--tw-gradient-from),
+    var(--tw-gradient-via) var(--tw-gradient-via-position),
+    var(--tw-gradient-to) !important;
+}
+html.light .to-\[\#10111a\] {
+  --tw-gradient-to: #dbe2ec var(--tw-gradient-to-position) !important;
+}
+
+html.light .shadow-\[0_25px_70px_-15px_rgba\(34\,211\,238\,0\.4\)\] {
+  box-shadow: 0 18px 50px -18px rgba(34, 211, 238, 0.22) !important;
+}
+
+/* Battery icon — was solid white on dark wallpaper. On light wallpaper
+   needs to flip to dark for visibility. The slide-knob (now bg-[#ffffff])
+   uses an arbitrary value and is unaffected by this rule. */
+html.light .bg-white {
+  background-color: rgba(15, 23, 42, 0.85) !important;
+}
+html.light .border-white\/80 {
+  border-color: rgba(15, 23, 42, 0.65) !important;
+}
+html.light .bg-white\/80 {
+  background-color: rgba(15, 23, 42, 0.65) !important;
+}
+
+/* Soften the dark drop shadow under the white slide-knob in light mode */
+html.light .shadow-\[0_2px_12px_rgba\(0\,0\,0\,0\.35\)\] {
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18) !important;
+}

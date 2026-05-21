@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
-import { Phone, Sparkles, Workflow as WorkflowIcon, BarChart3, ConciergeBell, Mail } from "lucide-react";
+import { Phone, Sparkles, Workflow as WorkflowIcon, BarChart3, ConciergeBell, Mail, Brain } from "lucide-react";
 import { useT } from "@/contexts/LanguageContext";
 import { WhatsAppChatPreview } from "@/components/WhatsAppChatPreview";
 import { IPhoneCallPreview } from "@/components/IPhoneCallPreview";
 import { AIAssistantPreview } from "@/components/AIAssistantPreview";
-import { WorkflowPreview } from "@/components/WorkflowPreview";
+import { WorkflowCarousel } from "@/components/WorkflowCarousel";
+import { SecondBrainPreview } from "@/components/SecondBrainPreview";
 
 // WhatsApp silhouette
 const WhatsAppIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -35,7 +36,8 @@ const SmsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 // 4: AI Assistant
 // 5: Email
 // 6: Workflow Agents (full-width)
-const icons = [WhatsAppIcon, Phone, ConciergeBell, BarChart3, Sparkles, Mail, WorkflowIcon];
+// 7: Second Brain (full-width)
+const icons = [WhatsAppIcon, Phone, ConciergeBell, BarChart3, Sparkles, Mail, WorkflowIcon, Brain];
 
 const accents = [
   "from-[#22c55e]/20 to-[#22D3EE]/10",
@@ -45,12 +47,14 @@ const accents = [
   "from-[#A78BFA]/20 to-[#7C5CFF]/10",
   "from-[#A78BFA]/20 to-[#22D3EE]/10",
   "from-[#22D3EE]/20 to-[#7C5CFF]/10",
+  "from-[#7C5CFF]/25 to-[#22D3EE]/10",
 ];
 
 const WHATSAPP_INDEX = 0;
 const HOST_INDEX = 2;
 const AI_ASSISTANT_INDEX = 4;
 const WORKFLOW_INDEX = 6;
+const SECOND_BRAIN_INDEX = 7;
 
 export const AIAgents = () => {
   const { t } = useT();
@@ -83,7 +87,8 @@ export const AIAgents = () => {
             const isHost = i === HOST_INDEX;
             const isAiAssistant = i === AI_ASSISTANT_INDEX;
             const isWorkflow = i === WORKFLOW_INDEX;
-            const isFeature = isWhatsApp || isHost || isAiAssistant || isWorkflow;
+            const isSecondBrain = i === SECOND_BRAIN_INDEX;
+            const isFeature = isWhatsApp || isHost || isAiAssistant || isWorkflow || isSecondBrain;
             return (
               <motion.div
                 key={title}
@@ -97,6 +102,7 @@ export const AIAgents = () => {
                   isWhatsApp ? "lg:col-span-2" : "",
                   isHost ? "lg:col-span-2" : "",
                   isWorkflow ? "lg:col-span-3" : "",
+                  isSecondBrain ? "lg:col-span-3" : "",
                 ].join(" ")}
               >
                 <div
@@ -105,7 +111,7 @@ export const AIAgents = () => {
                 <div
                   className={[
                     "relative",
-                    isWorkflow
+                    isWorkflow || isSecondBrain
                       ? "grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"
                       : isFeature
                       ? "grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
@@ -164,7 +170,12 @@ export const AIAgents = () => {
                   )}
                   {isWorkflow && (
                     <div className="lg:col-span-2 flex justify-center w-full">
-                      <WorkflowPreview />
+                      <WorkflowCarousel />
+                    </div>
+                  )}
+                  {isSecondBrain && (
+                    <div className="lg:col-span-2 flex justify-center w-full">
+                      <SecondBrainPreview />
                     </div>
                   )}
                 </div>

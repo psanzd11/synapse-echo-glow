@@ -42,9 +42,9 @@ export const IPhoneCallPreview = () => {
         </div>
       </div>
 
-      {/* Dynamic Island with lock icon */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-2 h-6 w-[88px] rounded-full bg-black flex items-center justify-center z-20">
-        <Lock className="h-3 w-3 text-white/85" strokeWidth={2.5} fill="currentColor" />
+      {/* Dynamic Island with lock icon — uses arbitrary value so light-mode bg-black override doesn't lighten the notch */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-2 h-6 w-[88px] rounded-full bg-[#0a0a0a] flex items-center justify-center z-20">
+        <Lock className="h-3 w-3 text-[#f1f5f9]" strokeWidth={2.5} fill="currentColor" />
       </div>
 
       {/* Caller info — close to top, no empty middle */}
@@ -85,7 +85,7 @@ export const IPhoneCallPreview = () => {
             {call.slideText}
           </motion.span>
           <motion.div
-            className="absolute top-1 left-1 h-10 w-10 rounded-full bg-white flex items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
+            className="absolute top-1 left-1 h-10 w-10 rounded-full bg-[#ffffff] flex items-center justify-center shadow-[0_2px_12px_rgba(0,0,0,0.35)]"
             initial={{ x: 0 }}
             animate={{ x: [0, 184, 0] }}
             transition={{
