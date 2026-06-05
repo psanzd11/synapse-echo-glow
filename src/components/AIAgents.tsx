@@ -29,17 +29,18 @@ const SmsIcon = (props: React.SVGProps<SVGSVGElement>) => (
 );
 
 // Icons array — must match the category order in translations.ts
-// 0: WhatsApp/Instagram/SMS (uses 3 logos custom)
-// 1: Voice Agents
-// 2: AI Receptionist
-// 3: Data & Research
-// 4: AI Assistant
-// 5: Email
-// 6: Workflow Agents (full-width)
-// 7: Second Brain (full-width)
-const icons = [WhatsAppIcon, Phone, ConciergeBell, BarChart3, Sparkles, Mail, WorkflowIcon, Brain];
+// 0: Second Brain (full-width)
+// 1: WhatsApp/Instagram/SMS (uses 3 logos custom)
+// 2: Voice Agents
+// 3: AI Receptionist
+// 4: Data & Research
+// 5: AI Assistant
+// 6: Email
+// 7: Workflow Agents (full-width)
+const icons = [Brain, WhatsAppIcon, Phone, ConciergeBell, BarChart3, Sparkles, Mail, WorkflowIcon];
 
 const accents = [
+  "from-[#7C5CFF]/25 to-[#22D3EE]/10",
   "from-[#22c55e]/20 to-[#22D3EE]/10",
   "from-[#7C5CFF]/20 to-[#22D3EE]/10",
   "from-[#22D3EE]/20 to-[#7C5CFF]/15",
@@ -47,14 +48,13 @@ const accents = [
   "from-[#A78BFA]/20 to-[#7C5CFF]/10",
   "from-[#A78BFA]/20 to-[#22D3EE]/10",
   "from-[#22D3EE]/20 to-[#7C5CFF]/10",
-  "from-[#7C5CFF]/25 to-[#22D3EE]/10",
 ];
 
-const WHATSAPP_INDEX = 0;
-const HOST_INDEX = 2;
-const AI_ASSISTANT_INDEX = 4;
-const WORKFLOW_INDEX = 6;
-const SECOND_BRAIN_INDEX = 7;
+const SECOND_BRAIN_INDEX = 0;
+const WHATSAPP_INDEX = 1;
+const HOST_INDEX = 3;
+const AI_ASSISTANT_INDEX = 5;
+const WORKFLOW_INDEX = 7;
 
 export const AIAgents = () => {
   const { t } = useT();

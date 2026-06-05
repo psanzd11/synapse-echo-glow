@@ -73,6 +73,12 @@ const en = {
     pillarsHeading: 'Built for production. Not demos.',
     categories: [
       {
+        title: 'Second Brain',
+        desc: 'A personal AI that quietly captures everything from your phone — conversations, photos, notes, places — and surfaces the connections you never would have noticed yourself.',
+        items: ['Always-on capture from calls, messages, calendar, location', 'Connects people, memories and life areas into a single graph', 'Surfaces insights and reminders before you ask'],
+        price: '$49,900 + $4,900/mo',
+      },
+      {
         title: 'WhatsApp/Instagram/SMS Agent',
         desc: 'Conversational agents that book, sell, and support 24/7 on WhatsApp, Instagram, SMS, and your website — fully synced with your CRM.',
         items: ['24/7 automated reservations & appointments', 'Multi-channel: WhatsApp, Instagram, SMS, web widget', 'Live CRM dashboard with full conversation history'],
@@ -113,12 +119,6 @@ const en = {
         desc: 'Custom automations that run your operations end-to-end across every tool you use.',
         items: ['Contract generation & personalization', 'Client follow-up email automation', 'CRM optimization & orchestration'],
         price: '$1,000 – $5,000/mo',
-      },
-      {
-        title: 'Second Brain',
-        desc: 'A personal AI that quietly captures everything from your phone — conversations, photos, notes, places — and surfaces the connections you never would have noticed yourself.',
-        items: ['Always-on capture from calls, messages, calendar, location', 'Connects people, memories and life areas into a single graph', 'Surfaces insights and reminders before you ask'],
-        price: '$50,000/mo',
       },
     ],
     iphoneCall: {
@@ -359,6 +359,7 @@ const en = {
     pageEyebrow: 'Case Studies',
     pageHeading: 'Outcomes, not deliverables.',
     pageSubtext: 'Custom SaaS platforms, AI agents, automations, and growth engines we\'ve shipped — each tied to measurable results for the businesses using them.',
+    featuredBadge: 'Featured',
   },
   caseStudyDetail: {
     backLink: 'All case studies',
@@ -369,7 +370,6 @@ const en = {
     outcomeLabel: 'Outcome',
     outcomeSubheading: 'The result',
     stackLabel: 'Stack',
-    screenshotsLabel: 'Inside the build',
     moreCaseStudies: 'More case studies',
     viewAll: 'View all',
     notFound: 'Case study not found',
@@ -574,6 +574,12 @@ const es: typeof en = {
     pillarsHeading: 'Construidos para producción. No demos.',
     categories: [
       {
+        title: 'Segundo Cerebro',
+        desc: 'Una IA personal que captura silenciosamente todo desde tu móvil — conversaciones, fotos, notas, lugares — y descubre las conexiones que tú nunca habrías visto.',
+        items: ['Captura siempre activa: llamadas, mensajes, calendario, ubicación', 'Conecta personas, recuerdos y áreas de tu vida en un solo grafo', 'Te avisa antes de que tú lo pidas'],
+        price: '$49,900 + $4,900/mes',
+      },
+      {
         title: 'Agente de WhatsApp/Instagram/SMS',
         desc: 'Agentes conversacionales que reservan, venden y atienden 24/7 por WhatsApp, Instagram, SMS y tu web — totalmente sincronizados con tu CRM.',
         items: ['Reservas y citas automáticas 24/7', 'Multicanal: WhatsApp, Instagram, SMS, widget web', 'Panel CRM en vivo con historial completo de conversaciones'],
@@ -614,12 +620,6 @@ const es: typeof en = {
         desc: 'Automatizaciones a medida que gestionan tus operaciones de extremo a extremo.',
         items: ['Generación y personalización de contratos', 'Automatización de emails de seguimiento', 'Optimización y orquestación de CRM'],
         price: '$1,000 – $5,000/mes',
-      },
-      {
-        title: 'Segundo Cerebro',
-        desc: 'Una IA personal que captura silenciosamente todo desde tu móvil — conversaciones, fotos, notas, lugares — y descubre las conexiones que tú nunca habrías visto.',
-        items: ['Captura siempre activa: llamadas, mensajes, calendario, ubicación', 'Conecta personas, recuerdos y áreas de tu vida en un solo grafo', 'Te avisa antes de que tú lo pidas'],
-        price: '$50,000/mes',
       },
     ],
     iphoneCall: {
@@ -860,6 +860,7 @@ const es: typeof en = {
     pageEyebrow: 'Casos de Éxito',
     pageHeading: 'Resultados, no entregables.',
     pageSubtext: 'Plataformas SaaS, agentes de IA, automatizaciones y motores de crecimiento que hemos implementado — cada uno con resultados medibles para los negocios que los usan.',
+    featuredBadge: 'Destacado',
   },
   caseStudyDetail: {
     backLink: 'Todos los casos',
@@ -870,7 +871,6 @@ const es: typeof en = {
     outcomeLabel: 'Resultado',
     outcomeSubheading: 'El resultado',
     stackLabel: 'Tecnología',
-    screenshotsLabel: 'Dentro del proyecto',
     moreCaseStudies: 'Más casos de éxito',
     viewAll: 'Ver todos',
     notFound: 'Caso no encontrado',
