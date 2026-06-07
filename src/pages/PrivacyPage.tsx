@@ -9,7 +9,7 @@ const PrivacyPage = () => {
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <section className="relative pt-40 pb-20 px-6">
+      <section className="relative pt-28 pb-16 px-6 sm:pt-40 sm:pb-20 overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[400px] w-[700px] rounded-full bg-[#7C5CFF]/12 blur-[140px]" />
         <div className="relative mx-auto max-w-3xl">
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">

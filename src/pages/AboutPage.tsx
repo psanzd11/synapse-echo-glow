@@ -12,7 +12,7 @@ const AboutPage = () => {
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <section className="relative pt-40 pb-10 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-8 px-6 sm:pt-40 sm:pb-10 overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#22D3EE]/15 blur-[140px]" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,7 +23,7 @@ const AboutPage = () => {
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
             {t.about.pageEyebrow}
           </span>
-          <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
             {t.about.pageHeading}
           </h1>
           <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.about.pageSubtext}</p>

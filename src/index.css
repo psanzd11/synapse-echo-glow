@@ -361,3 +361,122 @@ html.light .bg-white\/80 {
 html.light .shadow-\[0_2px_12px_rgba\(0\,0\,0\,0\.35\)\] {
   box-shadow: 0 2px 10px rgba(15, 23, 42, 0.18) !important;
 }
+
+/* =====================================================
+   LIGHT MODE — override-completion pass (audit-driven)
+   Fills the gaps where hardcoded dark utilities had no
+   html.light rule. Same convention as above: white
+   opacity N -> rgba(15,23,42, ~N); dark/colored shadows
+   softened to lower alpha + tighter spread.
+   ===================================================== */
+
+/* ---- Text opacities not previously covered ---- */
+html.light .text-white\/85 {
+  color: rgba(15, 23, 42, 0.82) !important;
+}
+html.light .text-white\/75 {
+  color: rgba(15, 23, 42, 0.7) !important;
+}
+html.light .text-white\/45 {
+  color: rgba(15, 23, 42, 0.42) !important;
+}
+html.light .text-white\/35 {
+  color: rgba(15, 23, 42, 0.32) !important;
+}
+html.light .text-white\/30 {
+  color: rgba(15, 23, 42, 0.28) !important;
+}
+
+/* ---- Background opacities not previously covered ---- */
+html.light .bg-white\/25 {
+  background-color: rgba(15, 23, 42, 0.18) !important;
+}
+html.light .bg-white\/50 {
+  background-color: rgba(15, 23, 42, 0.4) !important;
+}
+html.light .bg-white\/60 {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+html.light .bg-white\/70 {
+  background-color: rgba(15, 23, 42, 0.58) !important;
+}
+html.light .bg-white\/\[0\.02\] {
+  background-color: rgba(15, 23, 42, 0.02) !important;
+}
+/* Workflow-carousel pill (sits on the now-light preview card) */
+html.light .bg-black\/60 {
+  background-color: rgba(248, 250, 252, 0.85) !important;
+}
+
+/* ---- Contextual exception: CaseStudyMediaGallery nav buttons ----
+   Those buttons combine bg-black/55|75 (a scrim over media) with a
+   text-white/85 icon. We intentionally do NOT lighten the scrim, so the
+   icon must stay light. Scope (2 classes) outranks the global text-white/85
+   rule above. */
+html.light .bg-black\/55.text-white\/85,
+html.light .bg-black\/75.text-white\/85 {
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* ---- Misc ---- */
+html.light .decoration-white\/20 {
+  text-decoration-color: rgba(15, 23, 42, 0.2) !important;
+}
+/* Navbar active-pill gradient ring middle stop */
+html.light .via-white\/10 {
+  --tw-gradient-stops:
+    var(--tw-gradient-from),
+    rgba(15, 23, 42, 0.1) var(--tw-gradient-via-position, 50%),
+    var(--tw-gradient-to) !important;
+}
+
+/* ---- Glow / drop shadows: soften for light backgrounds ---- */
+html.light .shadow-\[0_20px_60px_-20px_rgba\(0\,0\,0\,0\.8\)\] {
+  box-shadow: 0 16px 44px -22px rgba(15, 23, 42, 0.22) !important;
+}
+html.light .shadow-\[0_0_40px_rgba\(167\,139\,250\,0\.4\)\] {
+  box-shadow: 0 0 28px rgba(167, 139, 250, 0.22) !important;
+}
+html.light .shadow-\[0_0_30px_rgba\(167\,139\,250\,0\.4\)\] {
+  box-shadow: 0 0 22px rgba(167, 139, 250, 0.2) !important;
+}
+html.light .shadow-\[0_0_50px_rgba\(167\,139\,250\,0\.5\)\] {
+  box-shadow: 0 0 32px rgba(167, 139, 250, 0.24) !important;
+}
+html.light .shadow-\[0_0_20px_rgba\(124\,92\,255\,0\.25\)\] {
+  box-shadow: 0 0 16px rgba(124, 92, 255, 0.16) !important;
+}
+html.light .shadow-\[0_0_20px_rgba\(124\,92\,255\,0\.4\)\] {
+  box-shadow: 0 0 16px rgba(124, 92, 255, 0.2) !important;
+}
+html.light .shadow-\[0_0_15px_rgba\(124\,92\,255\,0\.35\)\] {
+  box-shadow: 0 0 12px rgba(124, 92, 255, 0.18) !important;
+}
+html.light .shadow-\[0_0_18px_rgba\(124\,92\,255\,0\.45\)\] {
+  box-shadow: 0 0 14px rgba(124, 92, 255, 0.22) !important;
+}
+html.light .shadow-\[0_4px_20px_rgba\(124\,92\,255\,0\.55\)\] {
+  box-shadow: 0 4px 16px rgba(124, 92, 255, 0.26) !important;
+}
+html.light .shadow-\[0_0_15px_rgba\(124\,92\,255\,0\.4\)\] {
+  box-shadow: 0 0 12px rgba(124, 92, 255, 0.2) !important;
+}
+html.light .shadow-\[0_8px_30px_-10px_rgba\(124\,92\,255\,0\.5\)\] {
+  box-shadow: 0 8px 24px -12px rgba(124, 92, 255, 0.26) !important;
+}
+html.light .shadow-\[0_0_20px_rgba\(34\,197\,94\,0\.4\)\] {
+  box-shadow: 0 0 16px rgba(34, 197, 94, 0.2) !important;
+}
+html.light .shadow-\[0_0_25px_rgba\(34\,197\,94\,0\.4\)\] {
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.2) !important;
+}
+html.light .shadow-\[0_20px_60px_-20px_rgba\(124\,92\,255\,0\.45\)\] {
+  box-shadow: 0 18px 50px -22px rgba(124, 92, 255, 0.22) !important;
+}
+html.light .shadow-\[0_25px_70px_-15px_rgba\(124\,92\,255\,0\.35\)\] {
+  box-shadow: 0 18px 50px -18px rgba(124, 92, 255, 0.2) !important;
+}
+/* drop-shadow uses the `filter` property (Navbar logo mark) */
+html.light .drop-shadow-\[0_0_12px_rgba\(124\,92\,255\,0\.55\)\] {
+  filter: drop-shadow(0 0 8px rgba(124, 92, 255, 0.3)) !important;
+}

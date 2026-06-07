@@ -8,7 +8,7 @@ export const CTA = () => {
   const checks = [t.cta.check1, t.cta.check2, t.cta.check3];
 
   return (
-    <section id="book" className="relative bg-black text-white py-32 px-6 overflow-hidden">
+    <section id="book" className="relative bg-black text-white py-16 sm:py-24 md:py-32 px-5 sm:px-6 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(124,92,255,0.18),transparent_60%)]" />
 
       <motion.div
@@ -16,7 +16,7 @@ export const CTA = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative mx-auto max-w-4xl rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl p-10 sm:p-16 text-center"
+        className="relative mx-auto max-w-4xl rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-xl p-6 sm:p-10 md:p-16 text-center"
       >
         <div className="absolute -top-px left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-[#A78BFA] to-transparent" />
 
@@ -24,7 +24,7 @@ export const CTA = () => {
           {t.cta.eyebrow}
         </span>
 
-        <h2 className="text-4xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent leading-[1.05]">
+        <h2 className="text-3xl sm:text-4xl md:text-6xl font-medium tracking-tight bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent leading-[1.05]">
           {t.cta.heading}
         </h2>
         <p className="mt-5 text-white/60 text-base sm:text-lg max-w-xl mx-auto">

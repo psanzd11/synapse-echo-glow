@@ -33,7 +33,7 @@ export const Pricing = () => {
   };
 
   return (
-    <section id="pricing" className="relative bg-black text-white py-32 px-6 border-t border-white/5">
+    <section id="pricing" className="relative bg-black text-white py-16 sm:py-24 md:py-32 px-5 sm:px-6 border-t border-white/5">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(124,92,255,0.08),transparent_60%)]" />
       <div className="relative mx-auto max-w-5xl">
         <motion.div
@@ -41,12 +41,12 @@ export const Pricing = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-12"
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-12"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
             {t.pricing.eyebrow}
           </span>
-          <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
             {t.pricing.heading}
           </h2>
           <p className="mt-4 text-white/60 text-base sm:text-lg">{t.pricing.subtext}</p>

@@ -18,6 +18,18 @@
     <meta name="twitter:title" content="Viddix AI — Custom AI agents, SaaS platforms & growth strategy" />
     <meta name="twitter:description" content="We design, build, and deploy custom AI systems alongside SaaS platforms and category-defining marketing strategy." />
     <meta name="twitter:image" content="/favicon.png" />
+
+    <!-- Apply saved theme before first paint to avoid a flash of dark mode.
+         No saved preference => no class => dark default (matches ThemeProvider). -->
+    <script>
+      (function () {
+        try {
+          if (localStorage.getItem("viddix-theme") === "light") {
+            document.documentElement.classList.add("light");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>

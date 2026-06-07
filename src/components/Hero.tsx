@@ -33,8 +33,8 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen w-full overflow-hidden bg-black text-white">
       {/* Ambient glow */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-[#7C5CFF]/20 blur-[140px] z-0" />
-      <div className="pointer-events-none absolute top-1/3 right-0 h-[400px] w-[500px] rounded-full bg-[#22D3EE]/10 blur-[120px] z-0" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[400px] w-[90vw] sm:h-[600px] sm:w-[900px] max-w-[900px] rounded-full bg-[#7C5CFF]/20 blur-[100px] sm:blur-[140px] z-0" />
+      <div className="pointer-events-none absolute top-1/3 right-0 h-[300px] w-[70vw] sm:h-[400px] sm:w-[500px] max-w-[500px] rounded-full bg-[#22D3EE]/10 blur-[100px] sm:blur-[120px] z-0" />
 
       <Navbar />
 
@@ -47,7 +47,7 @@ export const Hero = () => {
       </div>
 
       {/* Hero content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-6 pt-32 pb-40 text-center">
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-5 sm:px-6 pt-24 pb-24 sm:pt-32 sm:pb-40 text-center">
         {/* Eyebrow tag */}
         <motion.div
           initial="hidden"
@@ -89,7 +89,7 @@ export const Hero = () => {
           animate="show"
           custom={2}
           variants={fadeUp}
-          className="font-medium tracking-tight leading-[0.95] text-[56px] sm:text-[72px] md:text-[84px] max-w-5xl bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
+          className="font-medium tracking-tight leading-[0.95] text-[40px] sm:text-[56px] md:text-[72px] lg:text-[84px] max-w-5xl bg-gradient-to-b from-white via-white to-white/60 bg-clip-text text-transparent"
         >
           {t.hero.headline1}
           <br />
@@ -151,7 +151,7 @@ export const Hero = () => {
         transition={{ duration: 1, delay: 0.9 }}
         className="absolute bottom-8 left-0 right-0 z-10"
       >
-        <div className="mx-auto max-w-6xl px-6">
+        <div className="mx-auto max-w-6xl px-5 sm:px-6">
           <p className="text-center text-[10px] uppercase tracking-[0.25em] text-white/40 mb-4">
             {t.hero.trustedBy}
           </p>

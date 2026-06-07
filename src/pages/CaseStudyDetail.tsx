@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 import { AnimatedMetric } from "@/components/AnimatedMetric";
+import { CaseStudyMediaGallery } from "@/components/CaseStudyMediaGallery";
 import { caseStudies } from "@/data/caseStudies";
 import { useT } from "@/contexts/LanguageContext";
 
@@ -17,7 +18,7 @@ const CaseStudyDetail = () => {
     return (
       <main className="min-h-screen bg-black text-white">
         <Navbar />
-        <section className="pt-40 pb-32 px-6 text-center">
+        <section className="pt-28 pb-20 px-6 text-center sm:pt-40 sm:pb-32">
           <h1 className="text-3xl sm:text-4xl font-medium mb-4">{t.caseStudyDetail.notFound}</h1>
           <p className="text-white/60 mb-8">{t.caseStudyDetail.notFoundDesc}</p>
           <Link
@@ -38,7 +39,7 @@ const CaseStudyDetail = () => {
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <section className="relative pt-40 pb-16 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-12 px-6 sm:pt-40 sm:pb-16 overflow-hidden">
         <div
           className={`pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-gradient-to-br ${study.accent} blur-[140px] opacity-70`}
         />
@@ -94,106 +95,12 @@ const CaseStudyDetail = () => {
         </div>
       </section>
 
-      {(study.coverImage || study.videoUrl) && (
-        <section className="relative px-6 pb-4 border-t border-white/5">
-          <div className="relative mx-auto max-w-5xl pt-16">
-            {study.videoUrl ? (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.7 }}
-                className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-[0_30px_80px_-20px_rgba(124,92,255,0.35)]"
-              >
-                <div className="aspect-video w-full">
-                  {/youtube\.com|youtu\.be|vimeo\.com/.test(study.videoUrl) ? (
-                    <iframe
-                      src={study.videoUrl}
-                      title={study.headline}
-                      className="h-full w-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  ) : (
-                    <video
-                      src={study.videoUrl}
-                      poster={study.coverImage}
-                      controls
-                      playsInline
-                      className="h-full w-full object-cover"
-                    />
-                  )}
-                </div>
-              </motion.div>
-            ) : study.coverImage ? (
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.7 }}
-                className="relative rounded-2xl overflow-hidden border border-white/10 bg-black/40 shadow-[0_30px_80px_-20px_rgba(124,92,255,0.35)]"
-              >
-                <img
-                  src={study.coverImage}
-                  alt={study.headline}
-                  loading="lazy"
-                  className="w-full h-auto block"
-                />
-              </motion.div>
-            ) : null}
-          </div>
-        </section>
-      )}
-
-      {study.screenshots && study.screenshots.length > 0 && (
-        <section className="relative px-6 pb-4 border-t border-white/5">
-          <div className="relative mx-auto max-w-5xl pt-16">
-            <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 mb-6 inline-block">
-              {t.caseStudyDetail.screenshotsLabel}
-            </span>
-            <div
-              className={`grid gap-4 ${
-                study.screenshots.length === 1
-                  ? "grid-cols-1"
-                  : study.screenshots.length === 2
-                  ? "grid-cols-1 md:grid-cols-2"
-                  : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
-              }`}
-            >
-              {study.screenshots.map((s, i) => (
-                <motion.figure
-                  key={s.src}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.55, delay: (i % 3) * 0.08 }}
-                  className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]"
-                >
-                  <div
-                    className="w-full overflow-hidden"
-                    style={{ aspectRatio: s.ratio ?? 16 / 9 }}
-                  >
-                    <img
-                      src={s.src}
-                      alt={s.caption ?? `${study.client} screenshot ${i + 1}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
-                  </div>
-                  {s.caption && (
-                    <figcaption className="px-4 py-3 text-xs text-white/60 border-t border-white/5">
-                      {s.caption}
-                    </figcaption>
-                  )}
-                </motion.figure>
-              ))}
-            </div>
-          </div>
-        </section>
+      {study.media && study.media.length > 0 && (
+        <CaseStudyMediaGallery media={study.media} accent={study.accent} />
       )}
 
       <section className="relative px-6 pb-32 border-t border-white/5">
-        <div className="relative mx-auto max-w-4xl pt-20 grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="relative mx-auto max-w-4xl pt-12 sm:pt-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

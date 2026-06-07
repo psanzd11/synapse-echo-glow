@@ -56,7 +56,7 @@ const Stat = ({
       className="flex flex-col items-start gap-3"
     >
       <Icon className="h-5 w-5 text-[#A78BFA]" />
-      <div className="text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent tabular-nums">
+      <div className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent tabular-nums">
         {format(v)}
       </div>
       <p className="text-sm text-white/50 max-w-xs">{label}</p>
@@ -106,7 +106,7 @@ const SpeedToLeadStat = ({ label, start, delay = 0 }: { label: string; start: bo
       className="flex flex-col items-start gap-3"
     >
       <Zap className="h-5 w-5 text-[#22D3EE]" />
-      <div className="text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent tabular-nums">
+      <div className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent tabular-nums">
         {fmt(secs)}
       </div>
       <p className="text-sm text-white/50 max-w-xs">{label}</p>
@@ -120,9 +120,9 @@ export const Proof = () => {
   const { t } = useT();
 
   return (
-    <section ref={ref} className="relative bg-black text-white py-24 px-6 border-y border-white/5">
+    <section ref={ref} className="relative bg-black text-white py-16 sm:py-24 px-5 sm:px-6 border-y border-white/5">
       <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 sm:gap-8">
           <Stat
             Icon={TrendingUp}
             target={3.4}
@@ -154,9 +154,9 @@ export const Proof = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-20 max-w-3xl mx-auto text-center"
+          className="mt-12 sm:mt-20 max-w-3xl mx-auto text-center"
         >
-          <p className="text-2xl sm:text-3xl font-medium leading-snug text-white/90">
+          <p className="text-xl sm:text-2xl md:text-3xl font-medium leading-snug text-white/90">
             {t.proof.quote}
           </p>
           <footer className="mt-6 text-sm text-white/50">{t.proof.quoteAttrib}</footer>

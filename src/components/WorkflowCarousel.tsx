@@ -100,7 +100,7 @@ const WorkflowSlide = ({
   const allDone = activeStep >= totalSteps;
 
   return (
-    <div className="relative w-full rounded-2xl border border-white/10 bg-gradient-to-b from-[#1c1d2a] to-[#0d0e16] overflow-hidden p-6 shadow-[0_20px_60px_-15px_rgba(124,92,255,0.4)]">
+    <div className="relative w-full rounded-2xl border border-white/10 bg-gradient-to-b from-[#1c1d2a] to-[#0d0e16] overflow-hidden p-4 sm:p-6 shadow-[0_20px_60px_-15px_rgba(124,92,255,0.4)]">
       <div className="absolute -top-px left-1/2 -translate-x-1/2 h-px w-2/3 bg-gradient-to-r from-transparent via-[#A78BFA] to-transparent" />
 
       <div className="flex items-start justify-between mb-5 gap-3">
@@ -135,7 +135,10 @@ const WorkflowSlide = ({
         </div>
       </div>
 
-      <div className="flex items-start gap-1">
+      <div
+        className="flex items-start gap-1 overflow-x-auto -mx-2 px-2 [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: "none" }}
+      >
         {workflow.steps.map((step, idx) => {
           const Icon = ICON_MAP[step.icon] || Sparkles;
           const isStepActive = isActive && idx === activeStep;
@@ -144,7 +147,7 @@ const WorkflowSlide = ({
 
           return (
             <div key={idx} className="flex items-start flex-1 min-w-0">
-              <div className="flex flex-col items-center text-center flex-shrink-0 w-[88px]">
+              <div className="flex flex-col items-center text-center flex-shrink-0 w-[72px] sm:w-[88px]">
                 <motion.div
                   className={[
                     "relative h-11 w-11 rounded-xl flex items-center justify-center border transition-colors duration-300",
@@ -293,7 +296,7 @@ export const WorkflowCarousel = () => {
         type="button"
         onClick={() => go(-1)}
         aria-label="Previous workflow"
-        className="absolute left-0 top-[58%] -translate-y-1/2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/60 backdrop-blur text-white/80 hover:bg-white/10 hover:text-white transition"
+        className="absolute left-0 top-[58%] -translate-y-1/2 z-10 inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/10 bg-black/60 backdrop-blur text-white/80 hover:bg-white/10 hover:text-white transition"
       >
         <ChevronLeft className="h-4 w-4" />
       </button>
@@ -301,7 +304,7 @@ export const WorkflowCarousel = () => {
         type="button"
         onClick={() => go(1)}
         aria-label="Next workflow"
-        className="absolute right-0 top-[58%] -translate-y-1/2 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-black/60 backdrop-blur text-white/80 hover:bg-white/10 hover:text-white transition"
+        className="absolute right-0 top-[58%] -translate-y-1/2 z-10 inline-flex h-11 w-11 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-white/10 bg-black/60 backdrop-blur text-white/80 hover:bg-white/10 hover:text-white transition"
       >
         <ChevronRight className="h-4 w-4" />
       </button>

@@ -15,7 +15,7 @@ const AIAgentsPage = () => {
     <main className="min-h-screen bg-black text-white">
       <Navbar />
 
-      <section className="relative pt-40 pb-10 px-6 overflow-hidden">
+      <section className="relative pt-28 pb-8 px-6 sm:pt-40 sm:pb-10 overflow-hidden">
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-[#22D3EE]/15 blur-[140px]" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,7 +26,7 @@ const AIAgentsPage = () => {
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-5">
             {t.aiAgents.pageEyebrow}
           </span>
-          <h1 className="text-5xl sm:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent leading-[1.05]">
             {t.aiAgents.pageHeading}
           </h1>
           <p className="mt-5 text-white/65 text-lg leading-relaxed">{t.aiAgents.pageSubtext}</p>
@@ -35,7 +35,7 @@ const AIAgentsPage = () => {
 
       <AIAgents />
 
-      <section className="relative bg-black text-white py-32 px-6 border-t border-white/5">
+      <section className="relative bg-black text-white py-16 sm:py-24 md:py-32 px-6 border-t border-white/5">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(124,92,255,0.06),transparent_60%)]" />
         <div className="relative mx-auto max-w-6xl">
           <motion.div
@@ -48,7 +48,7 @@ const AIAgentsPage = () => {
             <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
               {t.aiAgents.pillarsEyebrow}
             </span>
-            <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
               {t.aiAgents.pillarsHeading}
             </h2>
           </motion.div>

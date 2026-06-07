@@ -93,7 +93,10 @@ export const WorkflowPreview = () => {
       </div>
 
       {/* Pipeline */}
-      <div className="flex items-start gap-1">
+      <div
+        className="flex items-start gap-1 overflow-x-auto -mx-2 px-2 [&::-webkit-scrollbar]:hidden"
+        style={{ scrollbarWidth: "none" }}
+      >
         {data.steps.map((step, idx) => {
           const Icon = ICON_MAP[step.icon] || Sparkles;
           const isActive = idx === activeStep;
@@ -103,7 +106,7 @@ export const WorkflowPreview = () => {
           return (
             <div key={idx} className="flex items-start flex-1 min-w-0">
               {/* Node */}
-              <div className="flex flex-col items-center text-center flex-shrink-0 w-[88px]">
+              <div className="flex flex-col items-center text-center flex-shrink-0 w-[72px] sm:w-[88px]">
                 <motion.div
                   className={[
                     "relative h-11 w-11 rounded-xl flex items-center justify-center border transition-colors duration-300",

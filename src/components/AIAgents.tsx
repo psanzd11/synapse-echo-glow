@@ -60,7 +60,7 @@ export const AIAgents = () => {
   const { t } = useT();
 
   return (
-    <section id="agents" className="relative bg-black text-white py-32 px-6 border-t border-white/5">
+    <section id="agents" className="relative bg-black text-white py-16 sm:py-24 md:py-32 px-5 sm:px-6 border-t border-white/5">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(34,211,238,0.06),transparent_60%)]" />
       <div className="relative mx-auto max-w-6xl">
         <motion.div
@@ -68,12 +68,12 @@ export const AIAgents = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-10 sm:mb-16"
         >
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/60 mb-4">
             {t.aiAgents.eyebrow}
           </span>
-          <h2 className="text-4xl sm:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight bg-gradient-to-b from-white to-white/60 bg-clip-text text-transparent">
             {t.aiAgents.heading}
           </h2>
           <p className="mt-4 text-white/60 text-base sm:text-lg">{t.aiAgents.subtext}</p>
@@ -97,7 +97,7 @@ export const AIAgents = () => {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
                 className={[
-                  "group relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-7 hover:border-white/20 transition-all overflow-hidden",
+                  "group relative rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-5 sm:p-7 hover:border-white/20 transition-all overflow-hidden",
                   isAiAssistant ? "lg:col-span-2" : "",
                   isWhatsApp ? "lg:col-span-2" : "",
                   isHost ? "lg:col-span-2" : "",
@@ -112,9 +112,9 @@ export const AIAgents = () => {
                   className={[
                     "relative",
                     isWorkflow || isSecondBrain
-                      ? "grid grid-cols-1 lg:grid-cols-3 gap-8 items-start"
+                      ? "grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-start"
                       : isFeature
-                      ? "grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"
+                      ? "grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-start"
                       : "",
                   ].join(" ")}
                 >

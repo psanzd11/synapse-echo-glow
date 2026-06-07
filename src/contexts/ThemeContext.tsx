@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 type Theme = "dark" | "light";
 const STORAGE_KEY = "viddix-theme";
@@ -9,17 +9,14 @@ const ThemeContext = createContext<{
 }>({ theme: "dark", toggleTheme: () => {} });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    let stored: Theme = "dark";
-    try {
-      const v = localStorage.getItem(STORAGE_KEY);
-      if (v === "light") stored = "light";
-    } catch {}
-    setTheme(stored);
-    document.documentElement.classList.toggle("light", stored === "light");
-  }, []);
+  // The inline script in index.html has already applied the `.light` class
+  // before first paint (no flash). Read it back synchronously for initial state.
+  const [theme, setTheme] = useState<Theme>(() =>
+    typeof document !== "undefined" &&
+    document.documentElement.classList.contains("light")
+      ? "light"
+      : "dark"
+  );
 
   const toggleTheme = () => {
     setTheme((prev) => {
@@ -27,7 +24,9 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       document.documentElement.classList.toggle("light", next === "light");
       try {
         localStorage.setItem(STORAGE_KEY, next);
-      } catch {}
+      } catch {
+        /* localStorage unavailable (private mode / blocked) */
+      }
       return next;
     });
   };

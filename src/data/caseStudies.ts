@@ -7,12 +7,18 @@ export type CaseStudyMetric = {
   after: string;
 };
 
-export type CaseStudyScreenshot = {
-  src: string;
-  caption?: string;
-  /** Optional aspect ratio hint (default 16/9). */
-  ratio?: number;
-};
+/**
+ * A single media item shown in the case-study gallery on the detail page.
+ * Screenshots or videos of the web pages where this product lives.
+ *
+ * - `image`: `src` is any URL or local public-folder path.
+ * - `video`: `src` can be a YouTube/Vimeo embed URL (rendered in an iframe)
+ *   or a self-hosted mp4/webm (rendered with native controls).
+ *   `poster` is an optional thumbnail shown before playback.
+ */
+export type CaseStudyMediaItem =
+  | { kind: 'image'; src: string; caption?: string; alt?: string }
+  | { kind: 'video'; src: string; poster?: string; caption?: string };
 
 export type CaseStudy = {
   slug: string;
@@ -27,14 +33,15 @@ export type CaseStudy = {
   approach: string[];
   outcome: string[];
   stack?: string[];
-  /** Optional cover image (1600px wide recommended), shown above the hero. */
-  coverImage?: string;
-  /** Optional gallery of screenshots rendered in a dedicated block on the detail page. */
-  screenshots?: CaseStudyScreenshot[];
-  /** Optional video URL — YouTube/Vimeo embed URL or a self-hosted mp4/webm. */
-  videoUrl?: string;
+  /**
+   * Optional gallery of screenshots and/or videos shown on the detail page,
+   * wrapped in a browser-chrome frame. Carousel'd when there's more than one item.
+   */
+  media?: CaseStudyMediaItem[];
   /** Optional pull-quote from the client. */
   quote?: { text: string; author: string; role?: string };
+  /** When true, the listing card gets a small "Featured" pill in the corner. */
+  featured?: boolean;
 };
 
 export const caseStudies: CaseStudy[] = [
@@ -173,6 +180,7 @@ export const caseStudies: CaseStudy[] = [
       "94% of inbound calls answered (vs. previous miss rate).",
       "47% more qualified leads delivered to the human sales team.",
     ],
+    featured: true,
   },
   {
     slug: "service-data-email-automation",
@@ -200,6 +208,7 @@ export const caseStudies: CaseStudy[] = [
       "Zero manual status emails — operators focus on client work, not communications ops.",
       "12 hours per week reclaimed per agent.",
     ],
+    featured: true,
   },
   {
     slug: "property-mgmt-contract-agent",
