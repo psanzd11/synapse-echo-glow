@@ -476,7 +476,10 @@ html.light .shadow-\[0_20px_60px_-20px_rgba\(124\,92\,255\,0\.45\)\] {
 html.light .shadow-\[0_25px_70px_-15px_rgba\(124\,92\,255\,0\.35\)\] {
   box-shadow: 0 18px 50px -18px rgba(124, 92, 255, 0.2) !important;
 }
-/* drop-shadow uses the `filter` property (Navbar logo mark) */
+/* drop-shadow uses the `filter` property (Navbar logo mark).
+   No invert() here: in light mode LogoVideo loads an asset with the black
+   logo baked in (viddix-logo-alpha-black.webm), so inverting would turn it
+   white again. */
 html.light .drop-shadow-\[0_0_12px_rgba\(124\,92\,255\,0\.55\)\] {
   filter: drop-shadow(0 0 8px rgba(124, 92, 255, 0.3)) !important;
 }

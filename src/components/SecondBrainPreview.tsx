@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useT } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   heart: Heart,
@@ -141,6 +142,20 @@ type MemData = { label: string };
 
 export const SecondBrainPreview = () => {
   const { t } = useT();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
+  // SVG `fill` attributes are not covered by the html.light CSS overrides,
+  // so node label colors must be theme-aware here.
+  const c = {
+    catLabel: isLight ? "rgba(15, 23, 42, 0.78)" : "rgba(255,255,255,0.78)",
+    personLabel: isLight ? "rgba(15, 23, 42, 0.65)" : "rgba(255,255,255,0.65)",
+    personInitial: isLight ? "#0e7490" : "#a5f3fc",
+    memText: isLight ? "#15803d" : "#bbf7d0",
+    youLabel: isLight ? "#0f172a" : "#ffffff",
+    youIcon: isLight ? "#4338ca" : "#ffffff",
+    catIcon: isLight ? "#6D28D9" : "#E9D5FF",
+  };
   const data = t.aiAgents.secondBrain;
   const [cycle, setCycle] = useState(0);
 
@@ -303,7 +318,7 @@ export const SecondBrainPreview = () => {
                 textAnchor="middle"
                 fontSize="9.5"
                 fontWeight="600"
-                fill="#bbf7d0"
+                fill={c.memText}
                 style={{ letterSpacing: 0.1 }}
               >
                 {memories[i]?.label ?? ""}
@@ -342,7 +357,7 @@ export const SecondBrainPreview = () => {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: "#E9D5FF",
+                      color: c.catIcon,
                     }}
                   >
                     <Icon width={14} height={14} strokeWidth={2.2} />
@@ -354,7 +369,7 @@ export const SecondBrainPreview = () => {
                   textAnchor="middle"
                   fontSize="10"
                   fontWeight="600"
-                  fill="rgba(255,255,255,0.78)"
+                  fill={c.catLabel}
                 >
                   {cats[i]?.label ?? ""}
                 </text>
@@ -389,7 +404,7 @@ export const SecondBrainPreview = () => {
                 textAnchor="middle"
                 fontSize="12"
                 fontWeight="700"
-                fill="#a5f3fc"
+                fill={c.personInitial}
               >
                 {people[i]?.initial ?? ""}
               </text>
@@ -399,7 +414,7 @@ export const SecondBrainPreview = () => {
                 textAnchor="middle"
                 fontSize="9.5"
                 fontWeight="500"
-                fill="rgba(255,255,255,0.65)"
+                fill={c.personLabel}
               >
                 {people[i]?.label ?? ""}
               </text>
@@ -438,7 +453,7 @@ export const SecondBrainPreview = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#ffffff",
+                  color: c.youIcon,
                 }}
               >
                 <User width={15} height={15} strokeWidth={2.2} />
@@ -450,7 +465,7 @@ export const SecondBrainPreview = () => {
               textAnchor="middle"
               fontSize="11"
               fontWeight="700"
-              fill="#ffffff"
+              fill={c.youLabel}
               style={{ letterSpacing: 0.2 }}
             >
               {data.youLabel}
